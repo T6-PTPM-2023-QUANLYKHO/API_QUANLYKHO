@@ -63,7 +63,7 @@ namespace API_QuanLyKho.Hepper
             //StrUserName = "123";
             //
             //StrConnection = @"Data Source=" + StrSeverName + ";Initial Catalog=" + StrDatabaseName + ";Integrated Security=True";
-            StrConnection = @"Data Source=DESKTOP-02U2UQD\SQLEXPRESS;Initial Catalog=QUANLYKHOHANG;Persist Security Info=True;User ID=sa;Password=123";
+            StrConnection = @"Data Source= LAPTOP-OJDSJCBC;Initial Catalog=QUANLYKHOHANG;Persist Security Info=True;User ID=sa;Password=123";
             //window
             Conn = new SqlConnection();
             Conn.ConnectionString = StrConnection;
