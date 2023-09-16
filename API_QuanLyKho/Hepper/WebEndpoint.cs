@@ -32,5 +32,50 @@
             public const string REMOVE_BY_MAKHACHHANG = BaseEndpoint + "/remove-by-ma-khach-hang/{id}";
             public const string UPDATE_ITEM = BaseEndpoint + "/update";
         }
+        public static class LoaiSP
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/loai-sp";
+            public const string GET_ALL = BaseEndpoint + "/get-all";
+            public const string GET_BY_ID = BaseEndpoint + "/get-by-id/{id}";
+            public const string ADD_ITEM = BaseEndpoint + "/add-item";
+            public const string REMOVE_BY_MALOAISP= BaseEndpoint + "/remove-by-ma-loai-Sp/{id}";
+            public const string UPDATE_ITEM = BaseEndpoint + "/update";
+        }
+        public static class SanPham
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/San-pham";
+            public const string GET_ALL = BaseEndpoint + "/get-all";
+            public const string GET_BY_ID = BaseEndpoint + "/get-by-id/{id}";
+            public const string ADD_ITEM = BaseEndpoint + "/add-item";
+            public const string REMOVE_BY_MASP = BaseEndpoint + "/remove-by-ma-San-Pham/{id}";
+            public const string UPDATE_ITEM = BaseEndpoint + "/update";
+        }
+        public static class Khu
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/Khu";
+            public const string GET_ALL = BaseEndpoint + "/get-all";
+            public const string GET_BY_ID = BaseEndpoint + "/get-by-id/{id}";
+            public const string ADD_ITEM = BaseEndpoint + "/add-item";
+            public const string REMOVE_BY_MAKHU = BaseEndpoint + "/remove-by-ma-khu/{id}";
+            public const string UPDATE_ITEM = BaseEndpoint + "/update";
+        }
+        public static class KhoHang
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/KhoHang";
+            public const string GET_ALL = BaseEndpoint + "/get-all";
+            public const string GET_BY_ID = BaseEndpoint + "/get-by-id/{id}";
+            public const string ADD_ITEM = BaseEndpoint + "/add-item";
+            public const string REMOVE_BY_MAKHO = BaseEndpoint + "/remove-by-ma-kho/{id}";
+            public const string UPDATE_ITEM = BaseEndpoint + "/update";
+        }
+        public static class KeSP
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/ke";
+            public const string GET_ALL = BaseEndpoint + "/get-all";
+            public const string GET_BY_ID = BaseEndpoint + "/get-by-id/{id}";
+            public const string ADD_ITEM = BaseEndpoint + "/add-item";
+            public const string REMOVE_BY_MAKE = BaseEndpoint + "/remove-by-ma-ke/{id}";
+            public const string UPDATE_ITEM = BaseEndpoint + "/update";
+        }
     }
 }

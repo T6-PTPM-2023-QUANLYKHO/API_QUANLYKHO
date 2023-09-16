@@ -19,6 +19,22 @@ builder.Services.AddScoped<IPhieuXuatHangRepository, PhieuXuatHangRepository>();
 builder.Services.AddScoped<IKhachHangRepository, KhachHangRepository>();
 builder.Services.AddScoped<IKhachHangService, KhachHangService>();
 
+builder.Services.AddScoped<ILoaiSPService, LoaiSPService>();
+builder.Services.AddScoped<ILoaiSPRepository, LoaiSPRepository>();
+
+
+builder.Services.AddScoped<ISanPhamService, SanPhamService>();
+builder.Services.AddScoped<ISanPhamRepository, SanPhamRepository>();
+
+
+builder.Services.AddScoped<IKhuService, KhuService>();
+builder.Services.AddScoped<IKhuRepository, KhuRepository>();
+
+builder.Services.AddScoped<IKeSPService, KeSPService>();
+builder.Services.AddScoped<IKeSPRepository, KeSPRepository>();
+
+builder.Services.AddScoped<IKhoHangService, KhoHangService>();
+builder.Services.AddScoped<IKhoHangRepository, KhoHangRepository>();
 #endregion
 
 var app = builder.Build();
