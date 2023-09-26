@@ -28,6 +28,7 @@
             private const string BaseEndpoint = "~/" + AreaName + "/khach-hang";
             public const string GET_ALL = BaseEndpoint + "/get-all";
             public const string GET_BY_ID = BaseEndpoint + "/get-by-id/{id}";
+            public const string GET_BY_SDT = BaseEndpoint + "/get-by-sdt/{sdt}";
             public const string ADD_ITEM = BaseEndpoint + "/add-item";
             public const string REMOVE_BY_MAKHACHHANG = BaseEndpoint + "/remove-by-ma-khach-hang/{id}";
             public const string UPDATE_ITEM = BaseEndpoint + "/update";

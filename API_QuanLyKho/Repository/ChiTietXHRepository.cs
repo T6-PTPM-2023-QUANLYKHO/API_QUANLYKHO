@@ -18,6 +18,7 @@ namespace API_QuanLyKho.Repository
     }
     public class ChiTietXHRepository : IChiTietXHRepository
     {
+        //MyLibConnectDB con = new MyLibConnectDB(@"DESKTOP-02U2UQD\SQLEXPRESS", "QUANLYKHOHANG", "sa", "123");
         MyLibConnectDB con = new MyLibConnectDB();
         public List<ChiTietXHModel> getAll()
         {

@@ -6,7 +6,8 @@ namespace API_QuanLyKho.Service
     public interface IKhachHangService
     {
         public List<KhachHangModel> getAllKhachHang();
-        public KhachHangModel getKhachHangById(string makh);
+        public KhachHangModel getKhachHangById(string makh); 
+        public KhachHangModel getKhachHangBySDT(string sdt);
         public int AddKhachHang(KhachHangModel model);
         public int RemovekhachHang(string makh);
         public int UpdatekhachHang(KhachHangModel model);
@@ -29,6 +30,14 @@ namespace API_QuanLyKho.Service
             }
             return khachHangRepository.getKhachHangById(makh);
         }
+        public KhachHangModel getKhachHangBySDT(string sdt)
+        {
+            if (String.IsNullOrEmpty(sdt))
+            {
+                return null;
+            }
+            return khachHangRepository.getKhachHangBySDT(sdt);
+        }
         public int AddKhachHang(KhachHangModel model)
         {
             if (model == null) return 0;
@@ -42,7 +51,7 @@ namespace API_QuanLyKho.Service
         public int UpdatekhachHang(KhachHangModel model)
         {
             if (model == null) return 0;
-            return khachHangRepository.UpdateKhachHang(model);
+            return khachHangRepository.UpdateKhachHang(model,model.MAKH);
         }
     }
 }
