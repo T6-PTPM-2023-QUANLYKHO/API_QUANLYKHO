@@ -1,5 +1,7 @@
 using API_QuanLyKho.Repository;
 using API_QuanLyKho.Service;
+using API_QuanLyKho.Repository;
+using API_QuanLyKho.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +37,21 @@ builder.Services.AddScoped<IKeSPRepository, KeSPRepository>();
 
 builder.Services.AddScoped<IKhoHangService, KhoHangService>();
 builder.Services.AddScoped<IKhoHangRepository, KhoHangRepository>();
+//SANG
+builder.Services.AddScoped<IChiTietNHService, ChiTietNHService>();
+builder.Services.AddScoped<IChiTietNHRepository, ChiTietNHRepository>();
+
+builder.Services.AddScoped<IChucVuService, ChucVuService>();
+builder.Services.AddScoped<IChucVuRepository, ChucVuRepository>();
+
+builder.Services.AddScoped<INhaCungCapService, NhaCungCapService>();
+builder.Services.AddScoped<INhaCungCapRepository, NhaCungCapRepository>();
+
+builder.Services.AddScoped<INhanVienService, NhanVienService>();
+builder.Services.AddScoped<INhanVienRepository, NhanVienRepository>();
+
+builder.Services.AddScoped<IPhieuNhapHangService, PhieuNhapHangService>();
+builder.Services.AddScoped<IPhieuNhapHangRepository, PhieuNhapHangRepository>();
 #endregion
 
 var app = builder.Build();
