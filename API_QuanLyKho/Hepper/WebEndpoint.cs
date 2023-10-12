@@ -170,5 +170,15 @@
             public const string REMOVE_ITEM = BaseEndpoint + "/remove/{taikhoan-dn}";
             public const string UPDATE_ITEM = BaseEndpoint + "/update/{taikhoan-dn}";
         }
+        public static class ManHinh
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/ma-man-hinh";
+            public const string GET_ALL = BaseEndpoint + "/get-all";
+            public const string GET_BY_ID = BaseEndpoint + "/get-by-id/{ma-man-hinh}";
+            public const string ADD_ITEM = BaseEndpoint + "/add-item";
+            public const string REMOVE_BY_MaManHinh = BaseEndpoint + "/remove-by-ma-man-hinh/{id}";
+            public const string REMOVE_ITEM = BaseEndpoint + "/remove/{ma-man-hinh}";
+            public const string UPDATE_ITEM = BaseEndpoint + "/update/{ma-man-hinh}";
+        }
     }
 }

@@ -64,6 +64,9 @@ builder.Services.AddScoped<ITaiKhoanNVRepository, TaiKhoanNVRepository>();
 
 builder.Services.AddScoped<IDangNhapService, DangNhapService>();
 builder.Services.AddScoped<IDangNhapRepository, DangNhapRepository>();
+
+builder.Services.AddScoped<IManHinhService, ManHinhService>();
+builder.Services.AddScoped<IManHinhRepository, ManHinhRepository>();
 #endregion
 
 var app = builder.Build();

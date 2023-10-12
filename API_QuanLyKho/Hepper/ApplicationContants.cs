@@ -146,5 +146,12 @@
             public const string UPDATE_TaiKhoanDN_SUCCESS = "Cap nhat Tai Khoan thanh cong.";
             public const string DELETE_TaiKhoanDN_SUCCESS = "Xoa Tai Khoan thanh cong.";
         }
+        public class ReponseMessageConstantsManHinh
+        {
+            public const string NOT_FOUND_MaManHinh = "Khong tim thay Ma Man Hinh.";
+            public const string EXISTED_MaManHinh = "Ma man Hinh da ton tai.";
+            public const string UPDATE_MaManHinh_SUCCESS = "Cap nhat Ma Man Hinh thanh cong.";
+            public const string DELETE_MaManHinh_SUCCESS = "Xoa Ma Man Hinh thanh cong.";
+        }
     }    
 }
