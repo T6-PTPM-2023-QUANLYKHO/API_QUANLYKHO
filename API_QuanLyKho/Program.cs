@@ -52,6 +52,18 @@ builder.Services.AddScoped<INhanVienRepository, NhanVienRepository>();
 
 builder.Services.AddScoped<IPhieuNhapHangService, PhieuNhapHangService>();
 builder.Services.AddScoped<IPhieuNhapHangRepository, PhieuNhapHangRepository>();
+
+builder.Services.AddScoped<IPhanQuyenService, PhanQuyenService>();
+builder.Services.AddScoped<IPhanQuyenRepository, PhanQuyenRepository>();
+
+builder.Services.AddScoped<INhomNguoiDungService, NhomNguoiDungService>();
+builder.Services.AddScoped<INhomNguoiDungRepository, NhomNguoiDungRepository>();
+
+builder.Services.AddScoped<ITaiKhoanNVService, TaiKhoanNVService>();
+builder.Services.AddScoped<ITaiKhoanNVRepository, TaiKhoanNVRepository>();
+
+builder.Services.AddScoped<IDangNhapService, DangNhapService>();
+builder.Services.AddScoped<IDangNhapRepository, DangNhapRepository>();
 #endregion
 
 var app = builder.Build();

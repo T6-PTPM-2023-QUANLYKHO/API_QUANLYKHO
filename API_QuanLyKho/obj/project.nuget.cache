@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yYf1EDCPbT24FC430yEjvWwrIhTvrXkWLtN7ajCdZGZ0zrYAl3bQch9gI+O8DxWOHM9blTDpQL4Vj9CR0xhwNg==",
+  "dgSpecHash": "k6yFLtQeaQRxaEWNHgC6PWbnuun9HpoavbkpWzrkptgGSl1EbIBnIAXuxW6XfhaSBxKZRtwH1+bg8o82ht0LCw==",
   "success": true,
-  "projectFilePath": "F:\\OneDrive - Ho Chi Minh city University of Food Industry\\Ki_7_CNTT\\LTUD_ThongMinh\\DOAN\\API_QUANLYKHO\\API_QuanLyKho\\API_QuanLyKho.csproj",
+  "projectFilePath": "D:\\ĐẠI HOC\\PTTM\\API_QUANLYKHO\\API_QuanLyKho\\API_QuanLyKho.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
