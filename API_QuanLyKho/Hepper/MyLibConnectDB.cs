@@ -62,6 +62,7 @@ namespace API_QuanLyKho.Hepper
             //StrPassWord = "sa";
             //StrUserName = "123";
             //
+<<<<<<< HEAD
             StrConnection = @"Data Source=DESKTOP-02U2UQD\SQLEXPRESS;Initial Catalog=QUANLYKHOHANG;Persist Security Info=True;User ID=sa;Password=123";
 //            //StrConnection = @"Data Source=" + StrSeverName + ";Initial Catalog=" + StrDatabaseName + ";Integrated Security=True";
 //<<<<<<< HEAD
@@ -71,6 +72,12 @@ namespace API_QuanLyKho.Hepper
 //            //StrConnection = @"Data Source= LAPTOP-OJDSJCBC;Initial Catalog=QUANLYKHOHANG;Persist Security Info=True;User ID=sa;Password=123";
 //            StrConnection = @"Data Source= DELL\SQLEXPRESS;Initial Catalog=QUANLYKHOHANG;Persist Security Info=True;User ID=sa;Password=21062002";
 //>>>>>>> 05bc12fc7e510947e9bf7b4d24253afca47afe91
+=======
+            //StrConnection = @"Data Source=" + StrSeverName + ";Initial Catalog=" + StrDatabaseName + ";Integrated Security=True";
+            //StrConnection = @"Data Source= LAPTOP-OJDSJCBC;Initial Catalog=QUANLYKHOHANG;Persist Security Info=True;User ID=sa;Password=123";
+            //StrConnection = @"Data Source= DELL\SQLEXPRESS;Initial Catalog=QUANLYKHOHANG;Persist Security Info=True;User ID=sa;Password=21062002";
+            StrConnection = @"Data Source= DESKTOP-GMTEBGR;Initial Catalog=QUANLYKHOHANG;Persist Security Info=True;User ID=sa;Password=123";
+>>>>>>> cf92d5049744f9612bc1e0f81127e30dd0b0fb4a
             //window
             Conn = new SqlConnection();
             Conn.ConnectionString = StrConnection;
