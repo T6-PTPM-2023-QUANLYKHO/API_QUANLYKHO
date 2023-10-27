@@ -39,19 +39,23 @@ namespace API_QuanLyKho.Repository
         }
         public KhachHangModel getKhachHangBySDT(string sdt)
         {
-            string query = "select * from KHACH_HANG where SDT_KH ='"+sdt+"'";
-            DataTable tbl = con.getDataTable(query);
-
-            KhachHangModel kh = new KhachHangModel(
-                     tbl.Rows[0][0].ToString(), //makh
-                       tbl.Rows[0][1].ToString(),//tenkh
-                       tbl.Rows[0][2].ToString(),//dia chi 
-                       tbl.Rows[0][3].ToString(), //gioitinh
-                       tbl.Rows[0][4].ToString(), //sdt
-                       tbl.Rows[0][5].ToString(),//email
-                       tbl.Rows[0][6].ToString() //fax
-                                                 );
-            return kh;
+            try
+            {
+                string query = "select * from KHACH_HANG where SDT_KH ='" + sdt + "'";
+                DataTable tbl = con.getDataTable(query);
+                KhachHangModel kh = new KhachHangModel(
+                         tbl.Rows[0][0].ToString(), //makh
+                           tbl.Rows[0][1].ToString(),//tenkh
+                           tbl.Rows[0][2].ToString(),//dia chi 
+                           tbl.Rows[0][3].ToString(), //gioitinh
+                           tbl.Rows[0][4].ToString(), //sdt
+                           tbl.Rows[0][5].ToString(),//email
+                           tbl.Rows[0][6].ToString() //fax
+                                                     );
+                return kh;
+            }
+            catch { return null; }
+            
         }
         public KhachHangModel getKhachHangById(string makh)
         {
