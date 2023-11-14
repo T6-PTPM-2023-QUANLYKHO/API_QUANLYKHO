@@ -115,7 +115,7 @@
             public const string GET_ALL = BaseEndpoint + "/get-all";
             public const string GET_BY_ID = BaseEndpoint + "/get-by-id/{manhanvien}";
             public const string ADD_ITEM = BaseEndpoint + "/add-item";
-            public const string REMOVE_BY_NHANVIEN = BaseEndpoint + "/remove-by-maphieu/{manhanvien}";
+            public const string REMOVE_BY_NHANVIEN = BaseEndpoint + "/remove-by-manhanvien/{manhanvien}";
             public const string REMOVE_ITEM = BaseEndpoint + "/remove/{manhanvien}";
             public const string UPDATE_ITEM = BaseEndpoint + "/update/{manhanvien}";
         }
