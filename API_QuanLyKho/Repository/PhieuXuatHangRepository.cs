@@ -13,10 +13,28 @@ namespace API_QuanLyKho.Repository
         public int AddPhieuXuatHang(PhieuXuatHangModel model);
         public int RemovePhieuXuatHang(string maphieuxuat);
         public int UpdatePhieuXuatHang(PhieuXuatHangModel model);
+        public List<PhieuXuatHangModel> getPhieuThongKeSoNgay(int soNgay);
     }
     public class PhieuXuatHangRepository:IPhieuXuatHangRepository
     {
         MyLibConnectDB con = new MyLibConnectDB();
+        public List<PhieuXuatHangModel> getPhieuThongKeSoNgay(int soNgay)
+        {
+            string query = "SELECT * FROM PHIEU_XUAT_HANG WHERE NGAY_XH >= DATEADD(day, -"+soNgay+", GETDATE()) AND NGAY_XH <= GETDATE();";
+            List<PhieuXuatHangModel> lst = new List< PhieuXuatHangModel>();
+            DataTable tbl = con.getDataTable(query);
+            for (int i = 0; i < tbl.Rows.Count; i++)
+            {
+                PhieuXuatHangModel item = new PhieuXuatHangModel(
+                    tbl.Rows[i][0].ToString(),//MAPH_XH
+                    tbl.Rows[i][1].ToString(),//NGAY_XH
+                    tbl.Rows[i][3].ToString(),//MAKH
+                    tbl.Rows[i][2].ToString(),//TONGTIEN_XH
+                    tbl.Rows[i][4].ToString());//MANV
+                lst.Add(item);
+            }
+            return lst;
+        }
         public List<PhieuXuatHangModel> getAllPhieuXuatHang()
         {
             List<PhieuXuatHangModel> lst = new List<PhieuXuatHangModel> ();

@@ -22,6 +22,7 @@
             public const string ADD_ITEM = BaseEndpoint + "/add-item";
             public const string REMOVE_BY_MAPHIEUXH = BaseEndpoint + "/remove-by-maphieuxh/{id}";
             public const string UPDATE_ITEM = BaseEndpoint + "/update";
+            public const string GET_ThongKeSoNgay = BaseEndpoint + "/thong-ke-so-ngay/{songay}";
         }
         public static class KhachHang
         {
@@ -76,6 +77,124 @@
             public const string ADD_ITEM = BaseEndpoint + "/add-item";
             public const string REMOVE_BY_MAKE = BaseEndpoint + "/remove-by-ma-ke/{id}";
             public const string UPDATE_ITEM = BaseEndpoint + "/update";
+        }
+        //Sang
+        public static class ChiTietNH
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/chi-tiet-nhap-hang";
+            public const string GET_ALL = BaseEndpoint + "/get-all";
+            public const string GET_BY_ID = BaseEndpoint + "/get-by-id/{maphieunh}";
+            public const string ADD_ITEM = BaseEndpoint + "/add-item";
+            public const string REMOVE_BY_CTMAPHIEUNH = BaseEndpoint + "/remove-by-maphieu/{maphieunh}";
+            public const string REMOVE_ITEM = BaseEndpoint + "/remove/{maphieunh}";
+            public const string UPDATE_ITEM = BaseEndpoint + "/update/{maphieunh}";
+        }
+        public static class ChucVu
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/chuc-vu";
+            public const string GET_ALL = BaseEndpoint + "/get-all";
+            public const string GET_BY_ID = BaseEndpoint + "/get-by-id/{machucvu}";
+            public const string ADD_ITEM = BaseEndpoint + "/add-item";
+            public const string REMOVE_BY_CHUCVU = BaseEndpoint + "/remove-by-maphieu/{machucvu}";
+            public const string REMOVE_ITEM = BaseEndpoint + "/remove/{machucvu}";
+            public const string UPDATE_ITEM = BaseEndpoint + "/update/{machucvu}";
+        }
+        public static class NhaCungCap
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/nha-cung-cap";
+            public const string GET_ALL = BaseEndpoint + "/get-all";
+            public const string GET_BY_ID = BaseEndpoint + "/get-by-id/{manhacungcap}";
+            public const string GET_BY_SDT = BaseEndpoint + "/get-by-sdt/{sdtnhacungcap}";
+            public const string ADD_ITEM = BaseEndpoint + "/add-item";
+            public const string REMOVE_BY_NHACUNGCAP = BaseEndpoint + "/remove-by-maphieu/{manhacungcap}";
+            public const string REMOVE_ITEM = BaseEndpoint + "/remove/{manhacungcap}";
+            public const string UPDATE_ITEM = BaseEndpoint + "/update/{manhacungcap}";
+        }
+        public static class NhanVien
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/nhan-vien";
+            public const string GET_ALL = BaseEndpoint + "/get-all";
+            public const string GET_BY_ID = BaseEndpoint + "/get-by-id/{manhanvien}";
+            public const string ADD_ITEM = BaseEndpoint + "/add-item";
+            public const string REMOVE_BY_NHANVIEN = BaseEndpoint + "/remove-by-maphieu/{manhanvien}";
+            public const string REMOVE_ITEM = BaseEndpoint + "/remove/{manhanvien}";
+            public const string UPDATE_ITEM = BaseEndpoint + "/update/{manhanvien}";
+        }
+        public static class PhieuNhapHang
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/phieu-nhap-hang";
+            public const string GET_ALL = BaseEndpoint + "/get-all";
+            public const string GET_BY_ID = BaseEndpoint + "/get-by-id/{maphieunhaphang}";
+            public const string ADD_ITEM = BaseEndpoint + "/add-item";
+            public const string REMOVE_BY_PHIEUNHAPHANG = BaseEndpoint + "/remove-by-maphieu/{maphieunhaphang}";
+            public const string REMOVE_ITEM = BaseEndpoint + "/remove/{maphieunhaphang}";
+            public const string UPDATE_ITEM = BaseEndpoint + "/update/{maphieunhaphang}";
+            public const string GET_PhieuNhapSoNgay = BaseEndpoint + "/get-phieu-nhap-so-ngay/{songay}";
+        }
+        //Tuan
+        public static class PhanQuyen
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/phan-quyen";
+            public const string GET_ALL = BaseEndpoint + "/get-all";
+            public const string GET_BY_ID = BaseEndpoint + "/get-by-id/{manhomnguoidung}";
+            public const string ADD_ITEM = BaseEndpoint + "/add-item";
+            public const string REMOVE_BY_MaNhomNguoiDung = BaseEndpoint + "/remove-by-manhomnguoidung/{id}";
+            public const string REMOVE_ITEM = BaseEndpoint + "/remove/{manhomnguoidung}";
+            public const string UPDATE_ITEM = BaseEndpoint + "/update/{manhomnguoidung}";
+        }
+        public static class NhomNguoiDung
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/nhom-nguoi-dung";
+            public const string GET_ALL = BaseEndpoint + "/get-all";
+            public const string GET_BY_ID = BaseEndpoint + "/get-by-id/{manhom}";
+            public const string ADD_ITEM = BaseEndpoint + "/add-item";
+            public const string REMOVE_BY_MaNhom = BaseEndpoint + "/remove-by-manhom/{id}";
+            public const string REMOVE_ITEM = BaseEndpoint + "/remove/{manhom}";
+            public const string UPDATE_ITEM = BaseEndpoint + "/update/{manhom}";
+        }
+        public static class TaiKhoanNV
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/tai-khoan";
+            public const string GET_ALL = BaseEndpoint + "/get-all";
+            public const string GET_BY_ID = BaseEndpoint + "/get-by-id/{taikhoan}";
+            public const string ADD_ITEM = BaseEndpoint + "/add-item";
+            public const string REMOVE_BY_TaiKhoan = BaseEndpoint + "/remove-by-taikhoan/{id}";
+            public const string REMOVE_ITEM = BaseEndpoint + "/remove/{taikhoan}";
+            public const string UPDATE_ITEM = BaseEndpoint + "/update/{taikhoan}";
+        }
+        public static class DangNhap
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/tai-khoan-dn";
+            public const string GET_ALL = BaseEndpoint + "/get-all";
+            public const string GET_BY_ID = BaseEndpoint + "/get-by-id/{taikhoan-dn}";
+            public const string ADD_ITEM = BaseEndpoint + "/add-item";
+            public const string REMOVE_BY_TaiKhoanDN = BaseEndpoint + "/remove-by-taikhoan-dn/{id}";
+            public const string REMOVE_ITEM = BaseEndpoint + "/remove/{taikhoan-dn}";
+            public const string UPDATE_ITEM = BaseEndpoint + "/update/{taikhoan-dn}";
+        }
+        public static class ManHinh
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/ma-man-hinh";
+            public const string GET_ALL = BaseEndpoint + "/get-all";
+            public const string GET_BY_ID = BaseEndpoint + "/get-by-id/{ma-man-hinh}";
+            public const string ADD_ITEM = BaseEndpoint + "/add-item";
+            public const string REMOVE_BY_MaManHinh = BaseEndpoint + "/remove-by-ma-man-hinh/{id}";
+            public const string REMOVE_ITEM = BaseEndpoint + "/remove/{ma-man-hinh}";
+            public const string UPDATE_ITEM = BaseEndpoint + "/update/{ma-man-hinh}";
+        }
+        public static class ThongKe
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/thong-ke";
+            public const string GET_DoanhThuNhapHangTheoNgay = BaseEndpoint + "/get-phieu-nhap-theo-ngay/{ngaybd}/{ngaykt}";
+           public const string GET_DoanhThuXuatHangTheoNgay = BaseEndpoint + "/get-phieu-xuat-theo-ngay/{ngaybd}/{ngaykt}";
+        }
+        public static class GioHang
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/gio-hang";
+            public const string GET_GioHangByMaKH = BaseEndpoint + "/gio-hang-makh/{makh}";
+            public const string Add_Gio_Hang = BaseEndpoint + "/them-gio-hang";
+            public const string Delete_Gio_Hang = BaseEndpoint + "/xoa-gio-hang/{makh}/{maSP}";
+            public const string Cap_Nhat_Gio_Hang = BaseEndpoint + "/cap-nhat-gio-hang";
         }
     }
 }
