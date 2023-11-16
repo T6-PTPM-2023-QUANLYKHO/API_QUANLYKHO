@@ -67,6 +67,12 @@ builder.Services.AddScoped<IDangNhapRepository, DangNhapRepository>();
 
 builder.Services.AddScoped<IManHinhService, ManHinhService>();
 builder.Services.AddScoped<IManHinhRepository, ManHinhRepository>();
+
+builder.Services.AddScoped<IThongKeService, ThongKeService>();
+builder.Services.AddScoped<IThongKeRepository, ThongKeRepository>();
+
+builder.Services.AddScoped<IGioHangSevice, GioHangSevice>();
+builder.Services.AddScoped<IGioHangRepository, GioHangRepository>();
 #endregion
 
 var app = builder.Build();

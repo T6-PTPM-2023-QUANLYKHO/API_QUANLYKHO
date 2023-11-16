@@ -159,4 +159,8 @@ D:\ĐẠI HOC\PTTM\API_QUANLYKHO\API_QuanLyKho\obj\Debug\net6.0\refint\API_QuanL
 D:\ĐẠI HOC\PTTM\API_QUANLYKHO\API_QuanLyKho\obj\Debug\net6.0\API_QuanLyKho.pdb
 D:\ĐẠI HOC\PTTM\API_QUANLYKHO\API_QuanLyKho\obj\Debug\net6.0\API_QuanLyKho.genruntimeconfig.cache
 D:\ĐẠI HOC\PTTM\API_QUANLYKHO\API_QuanLyKho\obj\Debug\net6.0\ref\API_QuanLyKho.dll
+<<<<<<< HEAD
 >>>>>>> cf92d5049744f9612bc1e0f81127e30dd0b0fb4a
+=======
+D:\HK-7\Phan-mem-thong-minh\API_QuanLyKho\API_QuanLyKho\bin\Debug\net6.0\Newtonsoft.Json.dll
+>>>>>>> vanhien

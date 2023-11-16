@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/qXF3KpHN8HO2Emr71Sh98pHAcrm8XsaOUfGQDL0BHL7ztvPOKfOXWaugIFYSTsyKrBNbncYFC/sKggQ1q1DfA==",
+  "dgSpecHash": "c0aqcsPtM3/NaU7QieNFvQcS3wciUB/1RlITXnILWoSXfxeNGrJrpWXCl8kdYoOaxvSHM9F+W4eKK9aV9lsJwQ==",
   "success": true,
   "projectFilePath": "D:\\HK-7\\Phan-mem-thong-minh\\API_QuanLyKho\\API_QuanLyKho\\API_QuanLyKho.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

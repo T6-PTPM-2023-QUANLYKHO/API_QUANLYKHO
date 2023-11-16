@@ -1,6 +1,7 @@
 ﻿using API_QuanLyKho.Hepper;
 using API_QuanLyKho.Model;
 using API_QuanLyKho.Service;
+using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API_QuanLyKhoHang.Controllers
@@ -67,6 +68,16 @@ namespace API_QuanLyKhoHang.Controllers
             int kq = PhieuNhapHangService.UpdatePhieuNhapHang(model);
             if (kq == 1) { return Ok(ApplicationContants.ReponseMessageConstantsPhieuNhapHang.UPDATE_PhieuNhapHang_SUCCESS); }
             return BadRequest(ApplicationContants.ReponseMessageConstantsPhieuNhapHang.NOT_FOUND_PhieuNhapHang);
+        }
+        [Route(WebEndpoint.PhieuNhapHang.GET_PhieuNhapSoNgay)]
+        [HttpGet]
+        public IActionResult GetPhieuNhapTheoSoNgay()
+        {
+            string songay = RouteData.Values["songay"].ToString();
+            if (String.IsNullOrEmpty(songay)) { return BadRequest( ApplicationContants.ReponseMessageConstantsPhieuNhapHang.NOT_FOUND_PhieuNhapHang); }
+            List<PhieuNhapHangModel> lst = PhieuNhapHangService.getAllPhieuNhapHangSoNgay(int.Parse(songay));
+            if (lst == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsPhieuNhapHang.NOT_FOUND_PhieuNhapHang); }
+            return Ok(lst);
         }
     }
 }

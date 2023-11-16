@@ -10,6 +10,7 @@ namespace API_QuanLyKho.Service
         public int AddPhieuXuatHang(PhieuXuatHangModel model);
         public int RemovePhieuXuatHang(string maphieuxuat);
         public int UpdatePhieuXuatHang(PhieuXuatHangModel model);
+        public List<PhieuXuatHangModel> getPhieuThongKeSoNgay(int soNgay);
     }
     public class PhieuXuatHangService:IPhieuXuatHangService
     {
@@ -17,6 +18,12 @@ namespace API_QuanLyKho.Service
         public PhieuXuatHangService(IPhieuXuatHangRepository phieuXuatHangRepository)
         {
             this.repository = phieuXuatHangRepository;
+        }
+        public List<PhieuXuatHangModel> getPhieuThongKeSoNgay(int soNgay)
+        {
+            List<PhieuXuatHangModel> lst = new List<PhieuXuatHangModel>();
+            lst = repository.getPhieuThongKeSoNgay(soNgay);
+            return lst;
         }
         public List<PhieuXuatHangModel> getAllPhieuXuatHang()
         {

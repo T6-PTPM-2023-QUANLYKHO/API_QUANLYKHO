@@ -34,8 +34,8 @@ namespace API_QuanLyKho.Controllers
             if (model == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsPhieuXuatHang.NOT_FOUND_PhieuXuatHang); }
             return Ok(model);
         }
-        [Route(WebEndpoint.PhieuXuatHang.ADD_ITEM)]
         [HttpPost]
+        [Route(WebEndpoint.PhieuXuatHang.ADD_ITEM)]
         public IActionResult AddPhieuXuatHang(PhieuXuatHangModel model)
         {
             if (model == null) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
@@ -64,6 +64,17 @@ namespace API_QuanLyKho.Controllers
             int kq = phieuXuatHangService.UpdatePhieuXuatHang(model);
             if (kq == 1) { return Ok(ApplicationContants.ReponseMessageConstantsPhieuXuatHang.UPDATE_PhieuXuatHang_SUCCESS); }
             return BadRequest(ApplicationContants.ReponseMessageConstantsPhieuXuatHang.NOT_FOUND_PhieuXuatHang);
+        }
+        [Route(WebEndpoint.PhieuXuatHang.GET_ThongKeSoNgay)]
+        [HttpGet]
+        public IActionResult GetThongKeSoNgay()
+        {
+            string songay = RouteData.Values["songay"].ToString();
+            if (int.Parse(songay) < 1) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
+            if (String.IsNullOrEmpty(songay)) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
+            List<PhieuXuatHangModel> model = phieuXuatHangService.getPhieuThongKeSoNgay(int.Parse(songay));
+            if (model == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsPhieuXuatHang.NOT_FOUND_PhieuXuatHang); }
+            return Ok(model);
         }
     }
 }

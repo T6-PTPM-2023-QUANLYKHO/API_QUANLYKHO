@@ -1,6 +1,7 @@
 ﻿using API_QuanLyKho.Hepper;
 using API_QuanLyKho.Model;
 using AutoMapper.Configuration.Conventions;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Data;
 
@@ -13,46 +14,46 @@ namespace API_QuanLyKho.Repository
         public int AddPhieuXuatHang(PhieuXuatHangModel model);
         public int RemovePhieuXuatHang(string maphieuxuat);
         public int UpdatePhieuXuatHang(PhieuXuatHangModel model);
+        public List<PhieuXuatHangModel> getPhieuThongKeSoNgay(int soNgay);
     }
     public class PhieuXuatHangRepository:IPhieuXuatHangRepository
     {
         MyLibConnectDB con = new MyLibConnectDB();
-        public List<PhieuXuatHangModel> getAllPhieuXuatHang()
+        public List<PhieuXuatHangModel> getPhieuThongKeSoNgay(int soNgay)
         {
-            List<PhieuXuatHangModel> lst = new List<PhieuXuatHangModel> ();
+            string query = "SELECT * FROM PHIEU_XUAT_HANG WHERE NGAY_XH >= DATEADD(day, -"+soNgay+", GETDATE()) AND NGAY_XH <= GETDATE();";
+            List<PhieuXuatHangModel> lst = new List< PhieuXuatHangModel>();
+            DataTable tbl = con.getDataTable(query);
+            string json = JsonConvert.SerializeObject(tbl);
+            List<PhieuXuatHangModel> listPhieuXuat = JsonConvert.DeserializeObject<List<PhieuXuatHangModel>>(json);
+            return listPhieuXuat;
+        }
+        public List<PhieuXuatHangModel> getAllPhieuXuatHang()
+        {            
             string query = "select * from PHIEU_XUAT_HANG";
             DataTable tbl = con.getDataTable(query);
-            for (int i = 0; i < tbl.Rows.Count; i++)
-            {
-                PhieuXuatHangModel item = new PhieuXuatHangModel(
-                    tbl.Rows[i][0].ToString(),//MAPH_XH
-                    tbl.Rows[i][1].ToString(),//NGAY_XH
-                    tbl.Rows[i][3].ToString(),//MAKH
-                    tbl.Rows[i][2].ToString(),//TONGTIEN_XH
-                    tbl.Rows[i][4].ToString());//MANV
-                lst.Add(item);
-            }
-            return lst;
+            string json = JsonConvert.SerializeObject(tbl);
+            List<PhieuXuatHangModel> listPhieuXuat = JsonConvert.DeserializeObject<List<PhieuXuatHangModel>>(json);
+            return listPhieuXuat;
         }
         public PhieuXuatHangModel getPhieuXuatHangById(string maPhieu)
         {
             string query = "select * from PHIEU_XUAT_HANG where MAPH_XH = '" + maPhieu + "'";
             DataTable tbl = con.getDataTable(query);
-
-            PhieuXuatHangModel item = new PhieuXuatHangModel(
-                tbl.Rows[0].ToString(),//MAPH_XH
-                tbl.Rows[1].ToString(),//NGAY_XH
-                tbl.Rows[3].ToString(),//MAKH
-                tbl.Rows[2].ToString(),//TONGTIEN_XH
-                tbl.Rows[4].ToString());//MANV
-            return item;
+            string json = JsonConvert.SerializeObject(tbl);
+            List<PhieuXuatHangModel> listPhieuXuat = JsonConvert.DeserializeObject<List<PhieuXuatHangModel>>(json);
+            if (listPhieuXuat.Count >= 0)
+            {
+                PhieuXuatHangModel px = listPhieuXuat.FirstOrDefault();
+                return px;
+            }
+            return null;          
         }
         public int AddPhieuXuatHang(PhieuXuatHangModel model)
         {
             try
             {
-                string query = "insert into PHIEU_XUAT_HANG(MAPH_XH,NGAY_XH,MAKH,MANV) values ('" + model.MAPH_XH + "','" + model.NGAY_XH + "','" + model.MAKH + "','" + model.MANV + "')";
-
+                string query = "insert into PHIEU_XUAT_HANG(MAPH_XH,NGAY_XH,MAKH,MANV,TRANGTHAI) values ('" + model.MAPH_XH + "','" + model.NGAY_XH + "','" + model.MAKH + "','" + model.MANV + "',"+model.TRANGTHAI+")";
                 con.updateToDatabase(query);
                 return 1;
             }

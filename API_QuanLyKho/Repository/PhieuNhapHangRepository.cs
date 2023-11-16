@@ -1,6 +1,7 @@
 ﻿using API_QuanLyKho.Hepper;
 using API_QuanLyKho.Model;
 using System.Data;
+using System.Security;
 
 namespace API_QuanLyKho.Repository
 {
@@ -11,6 +12,7 @@ namespace API_QuanLyKho.Repository
         public int AddPhieuNhapHang(PhieuNhapHangModel modelPNH);
         public int RemovePhieuNhapHang(string maPNH);
         public int UpdatePhieuNhapHang(PhieuNhapHangModel modelPNH);
+        public List<PhieuNhapHangModel> getAllPhieuNhapHangSoNgay(int soNgay);
     }
     public class PhieuNhapHangRepository:IPhieuNhapHangRepository
     {
@@ -73,6 +75,23 @@ namespace API_QuanLyKho.Repository
                 return 1;
             }
             catch { return 0; }
+        }
+        public List<PhieuNhapHangModel> getAllPhieuNhapHangSoNgay(int soNgay)
+        {
+            string query = "SELECT * FROM PHIEU_NHAP_HANG WHERE NGAY_NH >= DATEADD(day, -"+soNgay+", GETDATE()) AND NGAY_NH <= GETDATE();";
+            DataTable tbl = con.getDataTable(query);
+            List<PhieuNhapHangModel> lst = new List<PhieuNhapHangModel>();
+            for (int i = 0; i < tbl.Rows.Count; i++)
+            {
+                PhieuNhapHangModel pnh = new PhieuNhapHangModel(
+                    tbl.Rows[i][0].ToString(), //maPhieuNH
+                      tbl.Rows[i][1].ToString(), //ngayNH
+                      int.Parse(tbl.Rows[i][2].ToString()), //tongTienNH
+                      tbl.Rows[i][3].ToString() //maNV
+                                                );
+                lst.Add(pnh);
+            }
+            return lst;
         }
     }
 }
