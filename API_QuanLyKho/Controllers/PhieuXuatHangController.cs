@@ -34,8 +34,8 @@ namespace API_QuanLyKho.Controllers
             if (model == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsPhieuXuatHang.NOT_FOUND_PhieuXuatHang); }
             return Ok(model);
         }
-        [Route(WebEndpoint.PhieuXuatHang.ADD_ITEM)]
         [HttpPost]
+        [Route(WebEndpoint.PhieuXuatHang.ADD_ITEM)]
         public IActionResult AddPhieuXuatHang(PhieuXuatHangModel model)
         {
             if (model == null) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
