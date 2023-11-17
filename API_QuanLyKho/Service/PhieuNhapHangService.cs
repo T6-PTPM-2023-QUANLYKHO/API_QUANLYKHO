@@ -10,6 +10,7 @@ namespace API_QuanLyKho.Service
         public int AddPhieuNhapHang(PhieuNhapHangModel modelCTNH);
         public int RemovePhieuNhapHang(string maCTNH);
         public int UpdatePhieuNhapHang(PhieuNhapHangModel modelCTNH);
+        public List<PhieuNhapHangModel> getAllPhieuNhapHangSoNgay(int soNgay);
     }
     public class PhieuNhapHangService:IPhieuNhapHangService
     {
@@ -43,6 +44,12 @@ namespace API_QuanLyKho.Service
         {
             if (model == null) return 0;
             return PhieuNhapHangRepository.UpdatePhieuNhapHang(model);
+        }
+
+        public List<PhieuNhapHangModel> getAllPhieuNhapHangSoNgay(int soNgay)
+        {
+            if (soNgay <= 0) { return null; }
+            return PhieuNhapHangRepository.getAllPhieuNhapHangSoNgay(soNgay);
         }
     }
 }

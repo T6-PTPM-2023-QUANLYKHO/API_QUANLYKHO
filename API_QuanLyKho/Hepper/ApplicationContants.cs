@@ -153,5 +153,13 @@
             public const string UPDATE_MaManHinh_SUCCESS = "Cap nhat Ma Man Hinh thanh cong.";
             public const string DELETE_MaManHinh_SUCCESS = "Xoa Ma Man Hinh thanh cong.";
         }
-    }    
+        public class ReponseMessageConstantsGioHang
+        {
+            public const string NOT_FOUND_GioHang = "Khong tim thay gio hang.";
+            public const string EXISTED_GioHang = "Gio hang da ton tai.";
+            public const string UPDATE_GioHang_SUCCESS = "Cap nhat Gio hang thanh cong.";
+            public const string DELETE_GioHang_SUCCESS = "Xoa Gio hang thanh cong.";
+        }
+    }
+   
 }
