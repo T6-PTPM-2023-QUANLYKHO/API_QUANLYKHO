@@ -30,9 +30,19 @@ namespace API_QuanLyKhoHang.Controllers
         [HttpGet]
         public IActionResult GetID()
         {
-            string maph = RouteData.Values["manhanvien"].ToString();
-            if (String.IsNullOrEmpty(maph)) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
-            NhanVienModel model = NhanVienService.getNhanVienById(maph);
+            string manv = RouteData.Values["manhanvien"].ToString();
+            if (String.IsNullOrEmpty(manv)) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
+            NhanVienModel model = NhanVienService.getNhanVienById(manv);
+            if (model == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsNhanVien.NOT_FOUND_NhanVien); }
+            return Ok(model);
+        }
+        [Route(WebEndpoint.NhanVien.GET_BY_SDT)]
+        [HttpGet]
+        public IActionResult GetSDT()
+        {
+            string sdtnv = RouteData.Values["sdtnhanvien"].ToString();
+            if (String.IsNullOrEmpty(sdtnv)) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
+            NhanVienModel model = NhanVienService.getNhanVienBySdt(sdtnv);
             if (model == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsNhanVien.NOT_FOUND_NhanVien); }
             return Ok(model);
         }

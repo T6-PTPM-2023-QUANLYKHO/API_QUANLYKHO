@@ -8,6 +8,7 @@ namespace API_QuanLyKho.Repository
     {
         public List<NhanVienModel> getAllNhanVien();
         public NhanVienModel getNhanVienById(string maNV);
+        public NhanVienModel getNhanVienBySdt(string sdt);
         public int AddNhanVien(NhanVienModel modelNV);
         public int RemoveNhanVien(string maNV);
         public int UpdateNhanVien(NhanVienModel modelNV);
@@ -41,6 +42,24 @@ namespace API_QuanLyKho.Repository
         public NhanVienModel getNhanVienById(string maNV)
         {
             string query = "SELECT * FROM NHAN_VIEN where MANV ='" + maNV + "'";
+            DataTable tbl = con.getDataTable(query);
+            NhanVienModel nv = new NhanVienModel(
+                    tbl.Rows[0][0].ToString(), //maNhanVien
+                      tbl.Rows[0][1].ToString(), //tenNhanVien
+                      tbl.Rows[0][2].ToString(), //mailNhanVien
+                      tbl.Rows[0][3].ToString(), //ngaySinh
+                      tbl.Rows[0][4].ToString(), //gioiTinh
+                      tbl.Rows[0][5].ToString(), //sdt
+                      tbl.Rows[0][6].ToString(), //diaChi
+                      int.Parse(tbl.Rows[0][7].ToString()), //luong
+                      tbl.Rows[0][8].ToString(), //boPhan
+                      tbl.Rows[0][9].ToString() //chucVu
+                                                 );
+            return nv;
+        }
+        public NhanVienModel getNhanVienBySdt(string sdt)
+        {
+            string query = "SELECT * FROM NHAN_VIEN where SDT_NV ='" + sdt + "'";
             DataTable tbl = con.getDataTable(query);
             NhanVienModel nv = new NhanVienModel(
                     tbl.Rows[0][0].ToString(), //maNhanVien

@@ -94,7 +94,7 @@
             public const string GET_ALL = BaseEndpoint + "/get-all";
             public const string GET_BY_ID = BaseEndpoint + "/get-by-id/{machucvu}";
             public const string ADD_ITEM = BaseEndpoint + "/add-item";
-            public const string REMOVE_BY_CHUCVU = BaseEndpoint + "/remove-by-maphieu/{machucvu}";
+            public const string REMOVE_BY_CHUCVU = BaseEndpoint + "/remove-by-ma_chuc_vu/{machucvu}";
             public const string REMOVE_ITEM = BaseEndpoint + "/remove/{machucvu}";
             public const string UPDATE_ITEM = BaseEndpoint + "/update/{machucvu}";
         }
@@ -114,6 +114,7 @@
             private const string BaseEndpoint = "~/" + AreaName + "/nhan-vien";
             public const string GET_ALL = BaseEndpoint + "/get-all";
             public const string GET_BY_ID = BaseEndpoint + "/get-by-id/{manhanvien}";
+            public const string GET_BY_SDT = BaseEndpoint + "/get-by-sdt/{sdtnhanvien}";
             public const string ADD_ITEM = BaseEndpoint + "/add-item";
             public const string REMOVE_BY_NHANVIEN = BaseEndpoint + "/remove-by-manhanvien/{manhanvien}";
             public const string REMOVE_ITEM = BaseEndpoint + "/remove/{manhanvien}";
