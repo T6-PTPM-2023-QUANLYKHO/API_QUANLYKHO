@@ -156,3 +156,4 @@ D:\ĐẠI HOC\PTTM\API_QUANLYKHO\API_QuanLyKho\obj\Debug\net6.0\API_QuanLyKho.pd
 D:\ĐẠI HOC\PTTM\API_QUANLYKHO\API_QuanLyKho\obj\Debug\net6.0\API_QuanLyKho.genruntimeconfig.cache
 D:\ĐẠI HOC\PTTM\API_QUANLYKHO\API_QuanLyKho\obj\Debug\net6.0\ref\API_QuanLyKho.dll
 D:\HK-7\Phan-mem-thong-minh\API_QuanLyKho\API_QuanLyKho\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\HK-7\Phan-mem-thong-minh\API_QuanLyKho\API_QuanLyKho\bin\Debug\net6.0\API_QuanLyKho.staticwebassets.runtime.json

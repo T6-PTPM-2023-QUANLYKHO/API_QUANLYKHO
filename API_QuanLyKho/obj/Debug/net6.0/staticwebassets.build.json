@@ -1,11 +1,37 @@
 {
   "Version": 1,
-  "Hash": "k/F/lxMxg6VIG7pVa05yPQJjXlj6kzqrEKPaBKUd09k=",
+  "Hash": "b9nRtMx7Qg7SaOHm9VpK6h9NyWhGkEsI3le+E4FAorA=",
   "Source": "API_QuanLyKho",
   "BasePath": "_content/API_QuanLyKho",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "API_QuanLyKho\\wwwroot",
+      "Source": "API_QuanLyKho",
+      "ContentRoot": "D:\\HK-7\\Phan-mem-thong-minh\\API_QuanLyKho\\API_QuanLyKho\\wwwroot\\",
+      "BasePath": "_content/API_QuanLyKho",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\HK-7\\Phan-mem-thong-minh\\API_QuanLyKho\\API_QuanLyKho\\wwwroot\\img\\sinh-vien.jpg",
+      "SourceId": "API_QuanLyKho",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\HK-7\\Phan-mem-thong-minh\\API_QuanLyKho\\API_QuanLyKho\\wwwroot\\",
+      "BasePath": "_content/API_QuanLyKho",
+      "RelativePath": "img/sinh-vien.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\sinh-vien.jpg"
+    }
+  ]
 }

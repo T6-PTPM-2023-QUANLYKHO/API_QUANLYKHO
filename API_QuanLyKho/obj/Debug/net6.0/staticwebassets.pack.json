@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\HK-7\\Phan-mem-thong-minh\\API_QuanLyKho\\API_QuanLyKho\\wwwroot\\img\\sinh-vien.jpg",
+      "PackagePath": "staticwebassets\\img\\sinh-vien.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.API_QuanLyKho.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.API_QuanLyKho.props",
+      "PackagePath": "build\\API_QuanLyKho.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.API_QuanLyKho.props",
+      "PackagePath": "buildMultiTargeting\\API_QuanLyKho.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.API_QuanLyKho.props",
+      "PackagePath": "buildTransitive\\API_QuanLyKho.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
