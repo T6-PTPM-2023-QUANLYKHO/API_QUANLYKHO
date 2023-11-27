@@ -120,7 +120,8 @@
             public const string ADD_ITEM = BaseEndpoint + "/add-item";
             public const string REMOVE_BY_NHANVIEN = BaseEndpoint + "/remove-by-manhanvien/{manhanvien}";
             public const string REMOVE_ITEM = BaseEndpoint + "/remove/{manhanvien}";
-            public const string UPDATE_ITEM = BaseEndpoint + "/update/{manhanvien}";
+            //public const string UPDATE_ITEM = BaseEndpoint + "/update/{manhanvien}";
+            public const string UPDATE_ITEM = BaseEndpoint + "/update";
         }
         public static class PhieuNhapHang
         {

@@ -51,7 +51,7 @@ namespace API_QuanLyKho.Service
         public int UpdateNhanVien(NhanVienModel model)
         {
             if (model == null) return 0;
-            return NhanVienRepository.UpdateNhanVien(model);
+            return NhanVienRepository.UpdateNhanVien(model, model.MaNhanVien);
         }
     }
 }
