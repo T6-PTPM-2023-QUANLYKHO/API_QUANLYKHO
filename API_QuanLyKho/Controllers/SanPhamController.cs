@@ -65,7 +65,19 @@ namespace API_QuanLyKho.Controllers
             if (kq == 1) { return Ok(ApplicationContants.ReponseMessageConstantsSanPham.UPDATE_SanPham_SUCCESS); }
             return BadRequest(ApplicationContants.ReponseMessageConstantsSanPham.NOT_FOUND_SanPham);
         }
-        
+        [HttpGet("getimage")]
+        public IActionResult GetImage()
+        {
+            // Đường dẫn tương đối đến thư mục chứa hình ảnh trong wwwroot
+            //var imagePath = "~/uploads/tintuc/2022/11/12/sinh-vien.jpeg";
+            var imagePath = "~/img/sinh-vien.jpg";
+
+            // Tạo đường dẫn đầy đủ bằng cách sử dụng Url.Content
+            var imageUrl = Url.Content(imagePath);
+
+            return Ok(new { ImageUrl = imageUrl });
+        }
+
 
     }
 }
