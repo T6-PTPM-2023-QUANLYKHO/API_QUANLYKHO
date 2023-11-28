@@ -1,5 +1,6 @@
 ﻿using API_QuanLyKho.Hepper;
 using API_QuanLyKho.Model;
+using System;
 using System.Data;
 
 namespace API_QuanLyKho.Repository
@@ -8,9 +9,10 @@ namespace API_QuanLyKho.Repository
     {
         public List<NhanVienModel> getAllNhanVien();
         public NhanVienModel getNhanVienById(string maNV);
+        public NhanVienModel getNhanVienBySdt(string sdt);
         public int AddNhanVien(NhanVienModel modelNV);
         public int RemoveNhanVien(string maNV);
-        public int UpdateNhanVien(NhanVienModel modelNV);
+        public int UpdateNhanVien(NhanVienModel modelNV, string maNV);
     }
     public class NhanVienRepository:INhanVienRepository
     {
@@ -40,7 +42,32 @@ namespace API_QuanLyKho.Repository
         }
         public NhanVienModel getNhanVienById(string maNV)
         {
-            string query = "SELECT * FROM NHAN_VIEN where MANV ='" + maNV + "'";
+            try
+            {
+                string query = "SELECT * FROM NHAN_VIEN where MANV ='" + maNV + "'";
+                DataTable tbl = con.getDataTable(query);
+                NhanVienModel nv = new NhanVienModel(
+                        tbl.Rows[0][0].ToString(), //maNhanVien
+                          tbl.Rows[0][1].ToString(), //tenNhanVien
+                          tbl.Rows[0][2].ToString(), //mailNhanVien
+                          tbl.Rows[0][3].ToString(), //ngaySinh
+                          tbl.Rows[0][4].ToString(), //gioiTinh
+                          tbl.Rows[0][5].ToString(), //sdt
+                          tbl.Rows[0][6].ToString(), //diaChi
+                          int.Parse(tbl.Rows[0][7].ToString()), //luong
+                          tbl.Rows[0][8].ToString(), //boPhan
+                          tbl.Rows[0][9].ToString() //chucVu
+                                                     );
+                return nv;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public NhanVienModel getNhanVienBySdt(string sdt)
+        {
+            string query = "SELECT * FROM NHAN_VIEN where SDT_NV ='" + sdt + "'";
             DataTable tbl = con.getDataTable(query);
             NhanVienModel nv = new NhanVienModel(
                     tbl.Rows[0][0].ToString(), //maNhanVien
@@ -76,12 +103,12 @@ namespace API_QuanLyKho.Repository
             }
             catch { return 0; }
         }
-        public int UpdateNhanVien(NhanVienModel model)
+        public int UpdateNhanVien(NhanVienModel model, string maNV)
         {
             try
             {
-                RemoveNhanVien(model.MaNhanVien);
-                AddNhanVien(model);
+                string query = "update NHAN_VIEN set TEN_NV = N'"+model.TenNhanVien+"', EMAIL_NV = '"+model.Email+"', NGSINH_NV = '"+model.NgaySinh+"', GIOITINH_NV = N'"+model.GioiTinh+"', SDT_NV = '"+model.SDT+"', DIACHI_NV = N'"+model.DiaChi+"', LUONG_NV = "+model.Luong+", BOPHAN_NV = N'"+model.BoPhan+"', MACHUCVU = '"+model.MaChucVu+"'where MANV = '"+ maNV + "'";
+                con.updateToDatabase(query);
                 return 1;
             }
             catch { return 0; }

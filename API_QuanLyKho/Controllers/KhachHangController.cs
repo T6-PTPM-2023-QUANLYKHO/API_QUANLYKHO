@@ -32,9 +32,19 @@ namespace API_QuanLyKho.Controllers
             if (model == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsKhachHang.NOT_FOUND_KhachHang); }
             return Ok(model);
         }
+        [Route(WebEndpoint.KhachHang.GET_BY_SDT)]
+        [HttpGet]
+        public IActionResult GetKHBySDT()
+        {
+            string maph = RouteData.Values["sdt"].ToString();
+            if (String.IsNullOrEmpty(maph)) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
+            KhachHangModel model = khachHangService.getKhachHangBySDT(maph);
+            if (model == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsKhachHang.NOT_FOUND_KhachHang); }
+            return Ok(model);
+        }
         [Route(WebEndpoint.KhachHang.ADD_ITEM)]
         [HttpPost]
-        public IActionResult AddPhieuXuatHang(KhachHangModel model)
+        public IActionResult AddKhachHang(KhachHangModel model)
         {
             if (model == null) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
             int kq = khachHangService.AddKhachHang(model);
@@ -44,7 +54,7 @@ namespace API_QuanLyKho.Controllers
         }
         [Route(WebEndpoint.KhachHang.REMOVE_BY_MAKHACHHANG)]
         [HttpDelete]
-        public IActionResult RemovePhieuXuatHang()
+        public IActionResult RemoveKhachHang()
         {
             string maph = RouteData.Values["id"].ToString();
             if (String.IsNullOrEmpty(maph))
@@ -57,7 +67,7 @@ namespace API_QuanLyKho.Controllers
         }      
         [Route(WebEndpoint.KhachHang.UPDATE_ITEM)]
         [HttpPut]
-        public IActionResult UpdatePhieuXuatHang(KhachHangModel model)
+        public IActionResult UpdateKhachHang(KhachHangModel model)
         {
             if (model == null) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
             int kq = khachHangService.UpdatekhachHang(model);

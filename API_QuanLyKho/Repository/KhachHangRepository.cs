@@ -1,5 +1,6 @@
 ﻿using API_QuanLyKho.Hepper;
 using API_QuanLyKho.Model;
+using System;
 using System.Data;
 
 namespace API_QuanLyKho.Repository
@@ -8,9 +9,10 @@ namespace API_QuanLyKho.Repository
     {
         public List<KhachHangModel> getAllKhachHang();
         public KhachHangModel getKhachHangById(string makh);
+        public KhachHangModel getKhachHangBySDT(string sdt);
         public int AddKhachHang(KhachHangModel model);
         public int RemoveKhachHang(string makh );
-        public int UpdateKhachHang(KhachHangModel model);
+        public int UpdateKhachHang(KhachHangModel model, string maKH);
     }
     public class KhachHangRepository: IKhachHangRepository
     {
@@ -34,6 +36,26 @@ namespace API_QuanLyKho.Repository
                 lst.Add(kh);
             }
             return lst;
+        }
+        public KhachHangModel getKhachHangBySDT(string sdt)
+        {
+            try
+            {
+                string query = "select * from KHACH_HANG where SDT_KH ='" + sdt + "'";
+                DataTable tbl = con.getDataTable(query);
+                KhachHangModel kh = new KhachHangModel(
+                         tbl.Rows[0][0].ToString(), //makh
+                           tbl.Rows[0][1].ToString(),//tenkh
+                           tbl.Rows[0][2].ToString(),//dia chi 
+                           tbl.Rows[0][3].ToString(), //gioitinh
+                           tbl.Rows[0][4].ToString(), //sdt
+                           tbl.Rows[0][5].ToString(),//email
+                           tbl.Rows[0][6].ToString() //fax
+                                                     );
+                return kh;
+            }
+            catch { return null; }
+            
         }
         public KhachHangModel getKhachHangById(string makh)
         {
@@ -71,12 +93,14 @@ namespace API_QuanLyKho.Repository
             }
             catch { return 0; }
         }
-        public int UpdateKhachHang(KhachHangModel model)
+        public int UpdateKhachHang(KhachHangModel model, string maKH)
         {
             try
             {
-                RemoveKhachHang(model.MAKH);
-                AddKhachHang(model);
+                string query = "UPDATE KHACH_HANG " +
+                    "set TEN_KH='"+model.TEN_KH+"',DIACHI_KH ='"+model.DIACHI_KH+"',GIOITINH_KH='"+model.GIOITINH_KH+"',SDT_KH='"+model.SDT_KH+"',EMAIL_KH='"+model.EMAIL_KH+"',FAX='"+model.FAX+"'" +
+                    "where MAKH='"+maKH+"'";
+                con.updateToDatabase(query);
                 return 1;
             }
             catch { return 0; }

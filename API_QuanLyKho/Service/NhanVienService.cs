@@ -6,7 +6,8 @@ namespace API_QuanLyKho.Service
     public interface INhanVienService
     {
         public List<NhanVienModel> getAllNhanVien();
-        public NhanVienModel getNhanVienById(string maCTNH);
+        public NhanVienModel getNhanVienById(string maNV);
+        public NhanVienModel getNhanVienBySdt(string sdt);
         public int AddNhanVien(NhanVienModel modelCTNH);
         public int RemoveNhanVien(string maCTNH);
         public int UpdateNhanVien(NhanVienModel modelCTNH);
@@ -29,6 +30,14 @@ namespace API_QuanLyKho.Service
             }
             return NhanVienRepository.getNhanVienById(maNV);
         }
+        public NhanVienModel getNhanVienBySdt(string sdt)
+        {
+            if (String.IsNullOrEmpty(sdt))
+            {
+                return null;
+            }
+            return NhanVienRepository.getNhanVienBySdt(sdt);
+        }
         public int AddNhanVien(NhanVienModel model)
         {
             if (model == null) return 0;
@@ -42,7 +51,7 @@ namespace API_QuanLyKho.Service
         public int UpdateNhanVien(NhanVienModel model)
         {
             if (model == null) return 0;
-            return NhanVienRepository.UpdateNhanVien(model);
+            return NhanVienRepository.UpdateNhanVien(model, model.MaNhanVien);
         }
     }
 }
