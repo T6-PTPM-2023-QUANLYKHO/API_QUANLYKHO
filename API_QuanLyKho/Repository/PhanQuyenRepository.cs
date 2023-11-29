@@ -1,6 +1,7 @@
 ﻿using API_QuanLyKho.Hepper;
 using API_QuanLyKho.Model;
 using System.Data;
+using static API_QuanLyKho.Hepper.WebEndpoint;
 
 namespace API_QuanLyKho.Repository
 {
@@ -11,6 +12,7 @@ namespace API_QuanLyKho.Repository
         public int AddPhanQuyen(PhanQuyenModel model);
         public int RemovePhanQuyen(string manhomngdung);
         public int UpdatePhanQuyen(PhanQuyenModel model);
+
     }
     public class PhanQuyenRepository : IPhanQuyenRepository
     {
@@ -25,7 +27,7 @@ namespace API_QuanLyKho.Repository
                 PhanQuyenModel kh = new PhanQuyenModel(
                     tbl.Rows[i][0].ToString(), //manhomngdung
                       tbl.Rows[i][1].ToString(),//mamh
-                      tbl.Rows[i][2].ToString()//coquyen
+                     Convert.ToBoolean(tbl.Rows[i][2])//coquyen
                                                 );
                 lst.Add(kh);
             }
@@ -39,10 +41,12 @@ namespace API_QuanLyKho.Repository
             PhanQuyenModel kh = new PhanQuyenModel(
                       tbl.Rows[0][0].ToString(), //manhomngdung
                       tbl.Rows[0][1].ToString(),//mamh
-                      tbl.Rows[0][2].ToString()//quyen
+                       Convert.ToBoolean(tbl.Rows[0][2])//quyen
                                                  );
             return kh;
         }
+
+
         public int AddPhanQuyen(PhanQuyenModel model)
         {
             try
@@ -67,11 +71,15 @@ namespace API_QuanLyKho.Repository
         {
             try
             {
-                RemovePhanQuyen(model.MA_NHOM_NGUOI_DUNG);
-                AddPhanQuyen(model);
+                string coQuyenValue = model.COQUYEN ? "1" : "0";
+                string query = "UPDATE QL_PHANQUYEN SET COQUYEN = '" + coQuyenValue + "' WHERE MAMANHINH = '" + model.MA_MAN_HINH + "' AND MANHOMNGUOIDUNG = '" + model.MA_NHOM_NGUOI_DUNG + "'";
+                con.updateToDatabase(query);
                 return 1;
             }
-            catch { return 0; }
+            catch
+            {
+                return 0;
+            }
         }
     }
 }

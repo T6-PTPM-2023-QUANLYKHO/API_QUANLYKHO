@@ -44,6 +44,7 @@ namespace API_QuanLyKho.Repository
             {
 
                 string query = "delete GIOHANG where MaSanPham='" + MaSP + "' and MAKH='" + MaKH + "'";
+                con.updateToDatabase(query);
                 return 1;
             }
             catch { return 0; }

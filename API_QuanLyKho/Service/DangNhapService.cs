@@ -7,9 +7,11 @@ namespace API_QuanLyKho.Service
     {
         public List<DangNhapModel> getAllDangNhap();
         public DangNhapModel getDangNhapById(string taikhoandn);
+        public DangNhapModel getDangNhaptkandmk(string taikhoandn, string matkhau);
         public int AddDangNhap(DangNhapModel model);
         public int Removedn(string taikhoandn);
         public int Updatedn(DangNhapModel model);
+        public List<string> GetTaiKhoan();
     }
     public class DangNhapService : IDangNhapService
     {
@@ -28,6 +30,20 @@ namespace API_QuanLyKho.Service
                 return null;
             }
             return dnRepository.getDangNhapById(taikhoandn);
+        }
+        public List<string> GetTaiKhoan()
+        {
+            List<string> lst = new List<string>();
+            lst = dnRepository.GetTaiKhoan();
+            return lst;
+        }
+        public DangNhapModel getDangNhaptkandmk(string taikhoandn, string matkhau)
+        {
+            if (String.IsNullOrEmpty(taikhoandn) || String.IsNullOrEmpty(matkhau))
+            {
+                return null;
+            }
+            return dnRepository.getDangNhaptkandmk(taikhoandn, matkhau);
         }
         public int AddDangNhap(DangNhapModel model)
         {

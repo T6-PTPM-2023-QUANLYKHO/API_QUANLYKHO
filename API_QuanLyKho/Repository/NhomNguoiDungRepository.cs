@@ -11,6 +11,7 @@ namespace API_QuanLyKho.Repository
         public int AddNhomNguoiDung(NhomNguoiDungModel model);
         public int RemoveNhomNguoiDung(string manhom);
         public int UpdateNhomNguoiDung(NhomNguoiDungModel model);
+        public List<string> GetMaNhom();
     }
     public class NhomNguoiDungRepository : INhomNguoiDungRepository
     {
@@ -43,6 +44,18 @@ namespace API_QuanLyKho.Repository
                                                  );
             return kh;
         }
+        public List<string> GetMaNhom()
+        {
+            string query = "SELECT DISTINCT MANHOM FROM QL_NHOMNGUOIDUNG";
+            DataTable tbl = con.getDataTable(query);
+            List<string> lst = new List<string>();
+            for (int i = 0; i < tbl.Rows.Count; i++)
+            {
+                string manhom = tbl.Rows[i][0].ToString(); // Lấy mã sản phẩm
+                lst.Add(manhom);
+            }
+            return lst;
+        }
         public int AddNhomNguoiDung(NhomNguoiDungModel model)
         {
             try
@@ -67,11 +80,14 @@ namespace API_QuanLyKho.Repository
         {
             try
             {
-                RemoveNhomNguoiDung(model.MA_NHOM);
-                AddNhomNguoiDung(model);
+                string query = "UPDATE QL_NHOMNGUOIDUNG SET TENNHOM = N'" + model.TEN_NHOM + "', GHICHU = '" + model.GHI_CHU + "' WHERE MANHOM = '" + model.MA_NHOM + "'";
+                con.updateToDatabase(query);
                 return 1;
             }
-            catch { return 0; }
+            catch
+            {
+                return 0;
+            }
         }
     }
 }

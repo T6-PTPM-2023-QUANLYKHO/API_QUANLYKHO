@@ -10,6 +10,7 @@ namespace API_QuanLyKho.Service
         public int AddKeSP(KeSPModel model);
         public int Removeke(string make);
         public int Updateke(KeSPModel model);
+        List<KeSPModel> getKeSPByMaKhu(string makhu);
     }
     public class KeSPService : IKeSPService
     {
@@ -43,6 +44,15 @@ namespace API_QuanLyKho.Service
         {
             if (model == null) return 0;
             return keRepository.UpdateKeSP(model);
+        }
+        public List<KeSPModel> getKeSPByMaKhu(string makhu)
+        {
+            if (String.IsNullOrEmpty(makhu))
+            {
+                return null;
+            }
+            List<KeSPModel> results = keRepository.getKeSPByMaKhu(makhu);
+            return results;
         }
     }
 }

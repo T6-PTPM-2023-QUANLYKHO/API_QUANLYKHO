@@ -64,6 +64,23 @@ namespace API_QuanLyKho.Controllers
             int kq = keSPService.Updateke(model);
             if (kq == 1) { return Ok(ApplicationContants.ReponseMessageConstantsKeSP.UPDATE_KeSP_SUCCESS); }
             return BadRequest(ApplicationContants.ReponseMessageConstantsKeSP.NOT_FOUND_KeSP);
+
+        }
+        [Route(WebEndpoint.KeSP.GET_BY_MAKHU)]
+        [HttpGet]
+        public IActionResult GetMakhu()
+        {
+            string makhu = RouteData.Values["id"].ToString();
+            if (String.IsNullOrEmpty(makhu))
+            {
+                return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED);
+            }
+            List<KeSPModel> models = keSPService.getKeSPByMaKhu(makhu);
+            if (models == null || models.Count == 0)
+            {
+                return NotFound(ApplicationContants.ReponseMessageConstantsKeSP.NOT_FOUND_KeSP);
+            }
+            return Ok(models);
         }
     }
 }

@@ -85,7 +85,59 @@ namespace API_QuanLyKho.Controllers
             if (kq == 1) { return Ok(ApplicationContants.ReponseMessageConstantsSanPham.UPDATE_SanPham_SUCCESS); }
             return BadRequest(ApplicationContants.ReponseMessageConstantsSanPham.NOT_FOUND_SanPham);
         }
-        
+        [HttpGet("getimage")]
+        public IActionResult GetImage()
+        {
+            // Đường dẫn tương đối đến thư mục chứa hình ảnh trong wwwroot
+            //var imagePath = "~/uploads/tintuc/2022/11/12/sinh-vien.jpeg";
+            var imagePath = "~/img/sinh-vien.jpg";
+
+            // Tạo đường dẫn đầy đủ bằng cách sử dụng Url.Content
+            var imageUrl = Url.Content(imagePath);
+
+            return Ok(new { ImageUrl = imageUrl });
+        }
+        [Route(WebEndpoint.SanPham.ThongKeSLNhap)]
+        [HttpGet]
+        public IActionResult GetThongKeSlNhap(DateTime ngaybd, DateTime ngaykt)
+        {
+            List<ThongKeSpModel> lst = sanPhamService.ThongKeSLNhap(ngaybd, ngaykt);
+            if (lst == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsSanPham.THONGKE_SanPham); }
+            return Ok(lst);
+        }
+
+        [Route(WebEndpoint.SanPham.ThongKeSLBan)]
+        [HttpGet]
+        public IActionResult GetThongKeBanHang(DateTime ngaybd, DateTime ngaykt)
+        {
+            List<ThongKeSpModel> lst = sanPhamService.ThongKeBanHang(ngaybd, ngaykt);
+            if (lst == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsSanPham.THONGKE_SanPham); }
+            return Ok(lst);
+        }
+        [Route(WebEndpoint.SanPham.ThongKeTonKho)]
+        [HttpGet]
+        public IActionResult GetThongKeTonKho(DateTime ngaybd, DateTime ngaykt)
+        {
+            List<ThongKeSpModel> lst = sanPhamService.ThongKeTonKho(ngaybd, ngaykt);
+            if (lst == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsSanPham.THONGKE_SanPham); }
+            return Ok(lst);
+        }
+        [Route(WebEndpoint.SanPham.ThongKeDate)]
+        [HttpGet]
+        public IActionResult GetThongKeDate(DateTime ngaybd, DateTime ngaykt)
+        {
+            List<SanPhamModel> lst = sanPhamService.ThongKeDate(ngaybd, ngaykt);
+            if (lst == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsSanPham.THONGKE_SanPham); }
+            return Ok(lst);
+        }
+        [Route(WebEndpoint.SanPham.GetMaSp)]
+        [HttpGet]
+        public IActionResult GetMaSp()
+        {
+            List<string> lst = sanPhamService.GetMaSP();
+            if (lst == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsSanPham.NOT_FOUND_SanPham); }
+            return Ok(lst);
+        }
 
     }
 }

@@ -8,6 +8,7 @@ namespace API_QuanLyKho.Repository
     {
         public List<KeSPModel> getAllKeSP();
         public KeSPModel getKeSPById(string make);
+        public List<KeSPModel> getKeSPByMaKhu(string makhu);
         public int AddKeSP(KeSPModel model);
         public int RemoveKeSP(string make);
         public int UpdateKeSP(KeSPModel model);
@@ -47,6 +48,25 @@ namespace API_QuanLyKho.Repository
                                                  );
             return kh;
         }
+        public List<KeSPModel> getKeSPByMaKhu(string makhu)
+        {
+            string query = "SELECT * FROM KE WHERE MAKHU = '" + makhu + "'";
+            DataTable tbl = con.getDataTable(query);
+            List<KeSPModel> result = new List<KeSPModel>();
+            foreach (DataRow row in tbl.Rows)
+            {
+                KeSPModel ke = new KeSPModel(
+                    row[0].ToString(), // make
+                    row[1].ToString(), // tenke
+                    row[2].ToString(), // Soluongsp
+                    row[3].ToString(), // makeu
+                    row[4].ToString()  // masp
+                );
+
+                result.Add(ke);
+            }
+            return result;
+        }
         public int AddKeSP(KeSPModel model)
         {
             try
@@ -71,11 +91,14 @@ namespace API_QuanLyKho.Repository
         {
             try
             {
-                RemoveKeSP(model.MA_KE);
-                AddKeSP(model);
+                string query = "UPDATE KE SET TENKE = N'" + model.TEN_KE + "', SOLUONGSP = '" + model.SOLUONGSP + "', MAKHU = N'" + model.MAKHU + "', MASP = '" + model.MASP + "' WHERE MAKE = '" + model.MA_KE + "'";
+                con.updateToDatabase(query);
                 return 1;
             }
-            catch { return 0; }
+            catch
+            {
+                return 0;
+            }
         }
     }
 }
