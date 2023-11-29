@@ -12,6 +12,7 @@ namespace API_QuanLyKho.Repository
         public int AddKhu(KhuModel model);
         public int RemoveKhu(string makhu);
         public int UpdateKhu(KhuModel model);
+        public List<string> GetMaKhu();
     }
     public class KhuRepository : IKhuRepository
     {
@@ -28,6 +29,18 @@ namespace API_QuanLyKho.Repository
                       tbl.Rows[i][1].ToString()//tenkhu
                                                 );
                 lst.Add(Lsp);
+            }
+            return lst;
+        }
+        public List<string> GetMaKhu()
+        {
+            string query = "SELECT DISTINCT MAKHU FROM KHU";
+            DataTable tbl = con.getDataTable(query);
+            List<string> lst = new List<string>();
+            for (int i = 0; i < tbl.Rows.Count; i++)
+            {
+                string makhu = tbl.Rows[i][0].ToString(); // Lấy mã KHU
+                lst.Add(makhu);
             }
             return lst;
         }
@@ -65,11 +78,14 @@ namespace API_QuanLyKho.Repository
         {
             try
             {
-                RemoveKhu(model.MA_KHU);
-                AddKhu(model);
+                string query = "UPDATE KHU SET TENKHU = N'" + model.TEN_KHU + "' WHERE MAKHU = '" + model.MA_KHU + "'";
+                con.updateToDatabase(query);
                 return 1;
             }
-            catch { return 0; }
+            catch
+            {
+                return 0;
+            }
         }
     }
 }

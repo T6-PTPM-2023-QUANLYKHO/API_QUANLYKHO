@@ -27,10 +27,27 @@ namespace API_QuanLyKho.Controllers
         [HttpGet]
         public IActionResult GetID()
         {
-            string mand = RouteData.Values["id"].ToString();
+            string mand = RouteData.Values["taikhoan-dn"].ToString();
             if (String.IsNullOrEmpty(mand)) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
             DangNhapModel model = DangNhapService.getDangNhapById(mand);
             if (model == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsDangNhap.NOT_FOUND_TaiKhoanDN); }
+            return Ok(model);
+        }
+        [Route(WebEndpoint.DangNhap.GET_BY_TKMK)]
+        [HttpGet]
+        public IActionResult GetTKMK()
+        {
+            string taikhoan = RouteData.Values["taikhoan-dn"].ToString();
+            string matkhau = RouteData.Values["matkhau-dn"].ToString();
+            if (String.IsNullOrEmpty(taikhoan) || String.IsNullOrEmpty(matkhau))
+            {
+                return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED);
+            }
+            DangNhapModel model = DangNhapService.getDangNhaptkandmk(taikhoan, matkhau);
+            if (model == null)
+            {
+                return BadRequest(ApplicationContants.ReponseMessageConstantsDangNhap.NOT_FOUND_TaiKhoanDN);
+            }
             return Ok(model);
         }
         [Route(WebEndpoint.DangNhap.ADD_ITEM)]
@@ -40,14 +57,14 @@ namespace API_QuanLyKho.Controllers
             if (model == null) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
             int kq = DangNhapService.AddDangNhap(model);
             if (kq == 0) { return BadRequest(ApplicationContants.ReponseMessageConstantsDangNhap.EXISTED_TaiKhoanDN); }
-            return Ok(ApplicationContants.ReponseMessageConstantsDangNhap.UPDATE_TaiKhoanDN_SUCCESS);
+            return Ok(ApplicationContants.ReponseMessageConstantsDangNhap.ADD_TaiKhoanDN_SUCCESS);
 
         }
         [Route(WebEndpoint.DangNhap.REMOVE_BY_TaiKhoanDN)]
         [HttpDelete]
         public IActionResult Removend()
         {
-            string mand = RouteData.Values["id"].ToString();
+            string mand = RouteData.Values["taikhoan-dn"].ToString();
             if (String.IsNullOrEmpty(mand))
             {
                 return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED);
@@ -64,6 +81,15 @@ namespace API_QuanLyKho.Controllers
             int kq = DangNhapService.Updatedn(model);
             if (kq == 1) { return Ok(ApplicationContants.ReponseMessageConstantsDangNhap.UPDATE_TaiKhoanDN_SUCCESS); }
             return BadRequest(ApplicationContants.ReponseMessageConstantsDangNhap.NOT_FOUND_TaiKhoanDN);
+        }
+        [Route(WebEndpoint.DangNhap.GetTaiKhoan)]
+        [HttpGet]
+        public IActionResult GetMaManHinh()
+        {
+            List<string> lst = DangNhapService.GetTaiKhoan();
+            if (lst == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsDangNhap.NOT_FOUND_TaiKhoanDN); }
+            return Ok(lst);
+
         }
     }
 }

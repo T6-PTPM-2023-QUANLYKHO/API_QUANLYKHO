@@ -9,7 +9,12 @@ namespace API_QuanLyKho.Service
         public SanPhamModel getSanPhamById(string masp);
         public int AddSanPham(SanPhamModel model);
         public int RemoveSanPham(string masp);
-        public int UpdateSanPham(SanPhamModel model);
+        public int UpdateSanPham(SanPhamModel model); 
+        public List<ThongKeSpModel> ThongKeSLNhap(DateTime ngaybd, DateTime ngaykt);
+        public List<ThongKeSpModel> ThongKeBanHang(DateTime ngaybd, DateTime ngaykt);
+        public List<ThongKeSpModel> ThongKeTonKho(DateTime ngaybd, DateTime ngaykt);
+        public List<SanPhamModel> ThongKeDate(DateTime ngaybd, DateTime ngaykt);
+        public List<string> GetMaSP();
     }
     public class SanPhamService : ISanPhamService
     {
@@ -43,6 +48,32 @@ namespace API_QuanLyKho.Service
         {
             if (model == null) return 0;
             return SanPhamRepository.UpdateSanPham(model);
+        }
+        public List<string> GetMaSP()
+        {
+            List<string> lst = new List<string>();
+            lst = SanPhamRepository.GetMaSP();
+            return lst;
+        }
+        public List<ThongKeSpModel> ThongKeSLNhap(DateTime ngaybd, DateTime ngaykt)
+        {
+            List<ThongKeSpModel> lst = SanPhamRepository.ThongKeSLNhap(ngaybd, ngaykt);
+            return lst;
+        }
+        public List<ThongKeSpModel> ThongKeBanHang(DateTime ngaybd, DateTime ngaykt)
+        {
+            List<ThongKeSpModel> lst = SanPhamRepository.ThongKeSlBan(ngaybd, ngaykt);
+            return lst;
+        }
+        public List<ThongKeSpModel> ThongKeTonKho(DateTime ngaybd, DateTime ngaykt)
+        {
+            List<ThongKeSpModel> lst = SanPhamRepository.ThongKeTonKho(ngaybd, ngaykt);
+            return lst;
+        }
+        public List<SanPhamModel> ThongKeDate(DateTime ngaybd, DateTime ngaykt)
+        {
+            List<SanPhamModel> lst = SanPhamRepository.ThongKeDate(ngaybd, ngaykt);
+            return lst;
         }
     }
 }

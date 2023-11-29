@@ -11,6 +11,7 @@ namespace API_QuanLyKho.Service
         public int AddNhanVien(NhanVienModel modelCTNH);
         public int RemoveNhanVien(string maCTNH);
         public int UpdateNhanVien(NhanVienModel modelCTNH);
+        public List<string> GetMaNhanVien();
     }
     public class NhanVienService:INhanVienService
     {
@@ -52,6 +53,12 @@ namespace API_QuanLyKho.Service
         {
             if (model == null) return 0;
             return NhanVienRepository.UpdateNhanVien(model, model.MaNhanVien);
+        }
+        public List<string> GetMaNhanVien()
+        {
+            List<string> lst = new List<string>();
+            lst = NhanVienRepository.GetMaNhanVien();
+            return lst;
         }
     }
 }

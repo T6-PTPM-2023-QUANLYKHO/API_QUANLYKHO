@@ -65,11 +65,14 @@ namespace API_QuanLyKho.Repository
         {
             try
             {
-                RemoveLoaiSP(model.MA_LOAI);
-                AddLoaiSP(model);
+                string query = "UPDATE LOAISP SET TENLOAI = N'" + model.TEN_LOAI + "' WHERE MALOAI = '" + model.MA_LOAI + "'";
+                con.updateToDatabase(query);
                 return 1;
             }
-            catch { return 0; }
+            catch
+            {
+                return 0;
+            }
         }
     }
 }

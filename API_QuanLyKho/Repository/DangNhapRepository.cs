@@ -8,9 +8,11 @@ namespace API_QuanLyKho.Repository
     {
         public List<DangNhapModel> getAllDangNhap();
         public DangNhapModel getDangNhapById(string taikhoandn);
+        public DangNhapModel getDangNhaptkandmk(string taikhoandn, string matkhau);
         public int AddDangNhap(DangNhapModel model);
         public int RemoveDangNhap(string taikhoandn);
         public int UpdateDangNhap(DangNhapModel model);
+        public List<string> GetTaiKhoan();
     }
     public class DangNhapRepository : IDangNhapRepository
     {
@@ -30,9 +32,39 @@ namespace API_QuanLyKho.Repository
             }
             return lst;
         }
+        public List<string> GetTaiKhoan()
+        {
+            string query = "SELECT DISTINCT TAIKHOAN FROM DANGNHAP";
+            DataTable tbl = con.getDataTable(query);
+            List<string> lst = new List<string>();
+            for (int i = 0; i < tbl.Rows.Count; i++)
+            {
+                string taikhoan = tbl.Rows[i][0].ToString();
+                lst.Add(taikhoan);
+            }
+            return lst;
+        }
         public DangNhapModel getDangNhapById(string taikhoandn)
         {
             string query = "SELECT * FROM DANGNHAP where TAIKHOAN ='" + taikhoandn + "'";
+            DataTable tbl = con.getDataTable(query);
+
+            if (tbl.Rows.Count > 0)
+            {
+                DangNhapModel kh = new DangNhapModel(
+                    tbl.Rows[0][0].ToString(), // taikhoandn
+                    tbl.Rows[0][1].ToString() // mk
+                );
+                return kh;
+            }
+            else
+            {
+                return null; // Hoặc thực hiện xử lý thích hợp khi không tìm thấy dữ liệu.
+            }
+        }
+        public DangNhapModel getDangNhaptkandmk(string taikhoandn, string matkhau)
+        {
+            string query = "SELECT * FROM DANGNHAP WHERE TAIKHOAN = '" + taikhoandn + "' AND MATKHAU = '" + matkhau + "'";
             DataTable tbl = con.getDataTable(query);
 
             DangNhapModel kh = new DangNhapModel(
@@ -65,11 +97,14 @@ namespace API_QuanLyKho.Repository
         {
             try
             {
-                RemoveDangNhap(model.TAI_KHOAN);
-                AddDangNhap(model);
+                string query = "UPDATE DANGNHAP SET MATKHAU = N'" + model.MAT_KHAU + "' WHERE TAIKHOAN = '" + model.TAI_KHOAN + "'";
+                con.updateToDatabase(query);
                 return 1;
             }
-            catch { return 0; }
+            catch
+            {
+                return 0;
+            }
         }
     }
 }

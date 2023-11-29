@@ -59,6 +59,8 @@
             public const string EXISTED_SanPham = "San Pham da ton tai.";
             public const string UPDATE_SanPham_SUCCESS = "Cap nhat San Pham thanh cong.";
             public const string DELETE_SanPham_SUCCESS = "Xoa San Pham thanh cong.";
+            public const string THONGKE_SanPham = "Thống kê sản phẩm không thành công.";
+            public const string THONGKE_SanPham_SUCCESS = "Thống kê sản phẩm thành công.";
         }
         public class ReponseMessageConstantsKhu
         {
@@ -145,6 +147,7 @@
             public const string EXISTED_TaiKhoanDN = "Tai Khoan Dang Nhap da ton tai.";
             public const string UPDATE_TaiKhoanDN_SUCCESS = "Cap nhat Tai Khoan thanh cong.";
             public const string DELETE_TaiKhoanDN_SUCCESS = "Xoa Tai Khoan thanh cong.";
+            public const string ADD_TaiKhoanDN_SUCCESS = "Tạo tài Khoản thành công.";
         }
         public class ReponseMessageConstantsManHinh
         {

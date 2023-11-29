@@ -10,16 +10,16 @@ namespace API_QuanLyKho.Controllers
     [ApiController]
     public class KhuController : ControllerBase
     {
-        private readonly IKhuService loaiSPService;
-        public KhuController(IKhuService loaiSPService)
+        private readonly IKhuService khuService;
+        public KhuController(IKhuService khuService)
         {
-            this.loaiSPService = loaiSPService;
+            this.khuService = khuService;
         }
         [Route(WebEndpoint.Khu.GET_ALL)]
         [HttpGet]
         public IActionResult GetAll()
         {
-            List<KhuModel> lst = loaiSPService.getAllKhu();
+            List<KhuModel> lst = khuService.getAllKhu();
             if (lst == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsKhu.NOT_FOUND_Khu); }
             return Ok(lst);
         }
@@ -29,7 +29,7 @@ namespace API_QuanLyKho.Controllers
         {
             string makhu = RouteData.Values["id"].ToString();
             if (String.IsNullOrEmpty(makhu)) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
-            KhuModel model = loaiSPService.getKhuById(makhu);
+            KhuModel model = khuService.getKhuById(makhu);
             if (model == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsKhu.NOT_FOUND_Khu); }
             return Ok(model);
         }
@@ -38,7 +38,7 @@ namespace API_QuanLyKho.Controllers
         public IActionResult AddKhu(KhuModel model)
         {
             if (model == null) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
-            int kq = loaiSPService.AddKhu(model);
+            int kq = khuService.AddKhu(model);
             if (kq == 0) { return BadRequest(ApplicationContants.ReponseMessageConstantsKhu.EXISTED_Khu); }
             return Ok(ApplicationContants.ReponseMessageConstantsKhu.UPDATE_Khu_SUCCESS);
 
@@ -52,7 +52,7 @@ namespace API_QuanLyKho.Controllers
             {
                 return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED);
             }
-            int kq = loaiSPService.RemoveKhu(makhu);
+            int kq = khuService.RemoveKhu(makhu);
             if (kq == 0) { return BadRequest(ApplicationContants.ReponseMessageConstantsKhu.NOT_FOUND_Khu); }
             return Ok(ApplicationContants.ReponseMessageConstantsKhu.DELETE_Khu_SUCCESS);
         }
@@ -61,12 +61,18 @@ namespace API_QuanLyKho.Controllers
         public IActionResult UpdateKhu(KhuModel model)
         {
             if (model == null) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
-            int kq = loaiSPService.UpdateKhu(model);
+            int kq = khuService.UpdateKhu(model);
             if (kq == 1) { return Ok(ApplicationContants.ReponseMessageConstantsKhu.UPDATE_Khu_SUCCESS); }
             return BadRequest(ApplicationContants.ReponseMessageConstantsKhu.NOT_FOUND_Khu);
         }
-
-
+        [Route(WebEndpoint.Khu.GetmaKhu)]
+        [HttpGet]
+        public IActionResult GetMaKhu()
+        {
+            List<string> lst = khuService.GetMaKhu();
+            if (lst == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsSanPham.NOT_FOUND_SanPham); }
+            return Ok(lst);
+        }
     }
 }
 
