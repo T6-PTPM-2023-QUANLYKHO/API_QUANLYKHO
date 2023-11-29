@@ -9,6 +9,8 @@ namespace API_QuanLyKho.Repository
     {
         public List<SanPhamModel> getAllSanPham();
         public SanPhamModel getSanPhamById(string masp);
+        public List<SanPhamModel> getSanPhamByNCC(string maNCC);
+        public List<SanPhamModel> getSanPhamByKho(string maKho);
         public int AddSanPham(SanPhamModel model);
         public int RemoveSanPham(string masp);
         public int UpdateSanPham(SanPhamModel model);
@@ -55,9 +57,57 @@ namespace API_QuanLyKho.Repository
                 Convert.ToInt32(tbl.Rows[0][7]), // GIA (chuyển đổi thành kiểu int)
                 tbl.Rows[0][8].ToString(), // GHICHU_SP
                 tbl.Rows[0][9].ToString(), // MAKHO
-                (byte[])tbl.Rows[0][10] // ANH (chuyển đổi thành kiểu byte[])
+                tbl.Rows[0][10] == DBNull.Value ? null : (byte[])tbl.Rows[0][10] // ANH (chuyển đổi thành kiểu byte[])
                                                  );
             return Lsp;
+        }
+        public List<SanPhamModel> getSanPhamByNCC(string maNCC)
+        {
+            string query = "SELECT * FROM SAN_PHAM WHERE MA_NCC = '"+maNCC+"'";
+            DataTable tbl = con.getDataTable(query);
+            List<SanPhamModel> lst = new List<SanPhamModel>();
+            for (int i = 0; i < tbl.Rows.Count; i++)
+            {
+                SanPhamModel Lsp = new SanPhamModel(
+                tbl.Rows[i][0].ToString(), // MA_SP
+                tbl.Rows[i][1].ToString(), // MA_NCC
+                tbl.Rows[i][2].ToString(), // TEN_SP
+                Convert.ToDateTime(tbl.Rows[i][3]), // NGAYSX (chuyển đổi thành kiểu DateTime)
+                Convert.ToDateTime(tbl.Rows[i][4]), // HSD (chuyển đổi thành kiểu DateTime)
+                Convert.ToInt32(tbl.Rows[i][5]), // SOLUONG (chuyển đổi thành kiểu int)
+                tbl.Rows[i][6].ToString(), // MA_LOAI
+                Convert.ToInt32(tbl.Rows[i][7]), // GIA (chuyển đổi thành kiểu int)
+                tbl.Rows[i][8].ToString(), // GHICHU_SP
+                tbl.Rows[i][9].ToString(), // MAKHO
+                tbl.Rows[i][10] == DBNull.Value ? null : (byte[])tbl.Rows[i][10] // ANH (kiểm tra giá trị null)
+                                                );
+                lst.Add(Lsp);
+            }
+            return lst;
+        }
+        public List<SanPhamModel> getSanPhamByKho(string maKho)
+        {
+            string query = "SELECT * FROM SAN_PHAM WHERE MAKHO = '"+maKho+"'";
+            DataTable tbl = con.getDataTable(query);
+            List<SanPhamModel> lst = new List<SanPhamModel>();
+            for (int i = 0; i < tbl.Rows.Count; i++)
+            {
+                SanPhamModel Lsp = new SanPhamModel(
+                tbl.Rows[i][0].ToString(), // MA_SP
+                tbl.Rows[i][1].ToString(), // MA_NCC
+                tbl.Rows[i][2].ToString(), // TEN_SP
+                Convert.ToDateTime(tbl.Rows[i][3]), // NGAYSX (chuyển đổi thành kiểu DateTime)
+                Convert.ToDateTime(tbl.Rows[i][4]), // HSD (chuyển đổi thành kiểu DateTime)
+                Convert.ToInt32(tbl.Rows[i][5]), // SOLUONG (chuyển đổi thành kiểu int)
+                tbl.Rows[i][6].ToString(), // MA_LOAI
+                Convert.ToInt32(tbl.Rows[i][7]), // GIA (chuyển đổi thành kiểu int)
+                tbl.Rows[i][8].ToString(), // GHICHU_SP
+                tbl.Rows[i][9].ToString(), // MAKHO
+                tbl.Rows[i][10] == DBNull.Value ? null : (byte[])tbl.Rows[i][10] // ANH (kiểm tra giá trị null)
+                                                );
+                lst.Add(Lsp);
+            }
+            return lst;
         }
         public int AddSanPham(SanPhamModel model)
         {

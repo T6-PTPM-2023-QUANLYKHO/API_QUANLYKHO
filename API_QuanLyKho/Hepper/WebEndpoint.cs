@@ -48,6 +48,8 @@
             private const string BaseEndpoint = "~/" + AreaName + "/San-pham";
             public const string GET_ALL = BaseEndpoint + "/get-all";
             public const string GET_BY_ID = BaseEndpoint + "/get-by-id/{id}";
+            public const string GET_BY_NCC = BaseEndpoint + "/get-by-ncc/{mancc}";
+            public const string GET_BY_KHO = BaseEndpoint + "/get-by-kho/{makho}";
             public const string ADD_ITEM = BaseEndpoint + "/add-item";
             public const string REMOVE_BY_MASP = BaseEndpoint + "/remove-by-ma-San-Pham/{id}";
             public const string UPDATE_ITEM = BaseEndpoint + "/update";

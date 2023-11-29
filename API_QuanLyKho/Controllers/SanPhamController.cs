@@ -33,6 +33,26 @@ namespace API_QuanLyKho.Controllers
             if (model == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsSanPham.NOT_FOUND_SanPham); }
             return Ok(model);
         }
+        [Route(WebEndpoint.SanPham.GET_BY_NCC)]
+        [HttpGet]
+        public IActionResult GetNCC()
+        {
+            string ma_ncc = RouteData.Values["mancc"].ToString();
+            if (String.IsNullOrEmpty(ma_ncc)) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
+            List<SanPhamModel> model = sanPhamService.getSanPhamByNCC(ma_ncc);
+            if (model == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsSanPham.NOT_FOUND_SanPham); }
+            return Ok(model);
+        }
+        [Route(WebEndpoint.SanPham.GET_BY_KHO)]
+        [HttpGet]
+        public IActionResult GetKho()
+        {
+            string ma_kho = RouteData.Values["makho"].ToString();
+            if (String.IsNullOrEmpty(ma_kho)) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
+            List<SanPhamModel> model = sanPhamService.getSanPhamByKho(ma_kho);
+            if (model == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsSanPham.NOT_FOUND_SanPham); }
+            return Ok(model);
+        }
         [Route(WebEndpoint.SanPham.ADD_ITEM)]
         [HttpPost]
         public IActionResult AddSanPham(SanPhamModel model)

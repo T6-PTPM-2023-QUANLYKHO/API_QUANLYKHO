@@ -1,5 +1,6 @@
 ﻿using API_QuanLyKho.Model;
 using API_QuanLyKho.Repository;
+using System.Text.RegularExpressions;
 
 namespace API_QuanLyKho.Service
 {
@@ -7,6 +8,8 @@ namespace API_QuanLyKho.Service
     {
         public List<SanPhamModel> getAllSanPham();
         public SanPhamModel getSanPhamById(string masp);
+        public List<SanPhamModel> getSanPhamByNCC(string maNCC);
+        public List<SanPhamModel> getSanPhamByKho(string maKho);
         public int AddSanPham(SanPhamModel model);
         public int RemoveSanPham(string masp);
         public int UpdateSanPham(SanPhamModel model);
@@ -28,6 +31,26 @@ namespace API_QuanLyKho.Service
                 return null;
             }
             return SanPhamRepository.getSanPhamById(masp);
+        }
+        public List<SanPhamModel> getSanPhamByNCC(string maNCC)
+        {
+            List<SanPhamModel> lst = new List<SanPhamModel>();
+            if (String.IsNullOrEmpty(maNCC))
+            {
+                return null;
+            }
+            lst = SanPhamRepository.getSanPhamByNCC(maNCC);
+            return lst;
+        }
+        public List<SanPhamModel> getSanPhamByKho(string maKho)
+        {
+            List<SanPhamModel> lst = new List<SanPhamModel>();
+            if (String.IsNullOrEmpty(maKho))
+            {
+                return null;
+            }
+            lst = SanPhamRepository.getSanPhamByKho(maKho);
+            return lst;
         }
         public int AddSanPham(SanPhamModel model)
         {
