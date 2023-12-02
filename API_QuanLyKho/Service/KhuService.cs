@@ -10,6 +10,7 @@ namespace API_QuanLyKho.Service
         public int AddKhu(KhuModel model);
         public int RemoveKhu(string makhu);
         public int UpdateKhu(KhuModel model);
+        public List<string> GetMaKhu();
     }
     public class KhuService : IKhuService
     {
@@ -43,6 +44,12 @@ namespace API_QuanLyKho.Service
         {
             if (model == null) return 0;
             return KhuRepository.UpdateKhu(model);
+        }
+        public List<string> GetMaKhu()
+        {
+            List<string> lst = new List<string>();
+            lst = KhuRepository.GetMaKhu();
+            return lst;
         }
     }
 }

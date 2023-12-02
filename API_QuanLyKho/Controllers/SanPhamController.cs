@@ -33,6 +33,26 @@ namespace API_QuanLyKho.Controllers
             if (model == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsSanPham.NOT_FOUND_SanPham); }
             return Ok(model);
         }
+        [Route(WebEndpoint.SanPham.GET_BY_NCC)]
+        [HttpGet]
+        public IActionResult GetNCC()
+        {
+            string ma_ncc = RouteData.Values["mancc"].ToString();
+            if (String.IsNullOrEmpty(ma_ncc)) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
+            List<SanPhamModel> model = sanPhamService.getSanPhamByNCC(ma_ncc);
+            if (model == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsSanPham.NOT_FOUND_SanPham); }
+            return Ok(model);
+        }
+        [Route(WebEndpoint.SanPham.GET_BY_KHO)]
+        [HttpGet]
+        public IActionResult GetKho()
+        {
+            string ma_kho = RouteData.Values["makho"].ToString();
+            if (String.IsNullOrEmpty(ma_kho)) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
+            List<SanPhamModel> model = sanPhamService.getSanPhamByKho(ma_kho);
+            if (model == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsSanPham.NOT_FOUND_SanPham); }
+            return Ok(model);
+        }
         [Route(WebEndpoint.SanPham.ADD_ITEM)]
         [HttpPost]
         public IActionResult AddSanPham(SanPhamModel model)
@@ -77,7 +97,47 @@ namespace API_QuanLyKho.Controllers
 
             return Ok(new { ImageUrl = imageUrl });
         }
+        [Route(WebEndpoint.SanPham.ThongKeSLNhap)]
+        [HttpGet]
+        public IActionResult GetThongKeSlNhap(DateTime ngaybd, DateTime ngaykt)
+        {
+            List<ThongKeSpModel> lst = sanPhamService.ThongKeSLNhap(ngaybd, ngaykt);
+            if (lst == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsSanPham.THONGKE_SanPham); }
+            return Ok(lst);
+        }
 
+        [Route(WebEndpoint.SanPham.ThongKeSLBan)]
+        [HttpGet]
+        public IActionResult GetThongKeBanHang(DateTime ngaybd, DateTime ngaykt)
+        {
+            List<ThongKeSpModel> lst = sanPhamService.ThongKeBanHang(ngaybd, ngaykt);
+            if (lst == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsSanPham.THONGKE_SanPham); }
+            return Ok(lst);
+        }
+        [Route(WebEndpoint.SanPham.ThongKeTonKho)]
+        [HttpGet]
+        public IActionResult GetThongKeTonKho(DateTime ngaybd, DateTime ngaykt)
+        {
+            List<ThongKeSpModel> lst = sanPhamService.ThongKeTonKho(ngaybd, ngaykt);
+            if (lst == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsSanPham.THONGKE_SanPham); }
+            return Ok(lst);
+        }
+        [Route(WebEndpoint.SanPham.ThongKeDate)]
+        [HttpGet]
+        public IActionResult GetThongKeDate(DateTime ngaybd, DateTime ngaykt)
+        {
+            List<SanPhamModel> lst = sanPhamService.ThongKeDate(ngaybd, ngaykt);
+            if (lst == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsSanPham.THONGKE_SanPham); }
+            return Ok(lst);
+        }
+        [Route(WebEndpoint.SanPham.GetMaSp)]
+        [HttpGet]
+        public IActionResult GetMaSp()
+        {
+            List<string> lst = sanPhamService.GetMaSP();
+            if (lst == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsSanPham.NOT_FOUND_SanPham); }
+            return Ok(lst);
+        }
 
     }
 }

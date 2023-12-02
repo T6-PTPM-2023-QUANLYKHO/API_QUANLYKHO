@@ -10,6 +10,7 @@ namespace API_QuanLyKho.Service
         public int AddNhomNguoiDung(NhomNguoiDungModel model);
         public int Removenh(string manhom);
         public int Updatenh(NhomNguoiDungModel model);
+        public List<string> GetMaNhom();
     }
     public class NhomNguoiDungService : INhomNguoiDungService
     {
@@ -19,6 +20,12 @@ namespace API_QuanLyKho.Service
         {
             List<NhomNguoiDungModel> lst = new List<NhomNguoiDungModel>();
             lst = nhRepository.getAllNhomNguoiDung();
+            return lst;
+        }
+        public List<string> GetMaNhom()
+        {
+            List<string> lst = new List<string>();
+            lst = nhRepository.GetMaNhom();
             return lst;
         }
         public NhomNguoiDungModel getNhomNguoiDungById(string manhom)

@@ -27,7 +27,7 @@ namespace API_QuanLyKho.Controllers
         [HttpGet]
         public IActionResult GetID()
         {
-            string mand = RouteData.Values["id"].ToString();
+            string mand = RouteData.Values["manhom"].ToString();
             if (String.IsNullOrEmpty(mand)) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
             NhomNguoiDungModel model = nhomNguoiDungService.getNhomNguoiDungById(mand);
             if (model == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsNhomNguoiDung.NOT_FOUND_MaNhom); }
@@ -64,6 +64,14 @@ namespace API_QuanLyKho.Controllers
             int kq = nhomNguoiDungService.Updatenh(model);
             if (kq == 1) { return Ok(ApplicationContants.ReponseMessageConstantsNhomNguoiDung.UPDATE_MaNhom_SUCCESS); }
             return BadRequest(ApplicationContants.ReponseMessageConstantsNhomNguoiDung.NOT_FOUND_MaNhom);
+        }
+        [Route(WebEndpoint.NhomNguoiDung.GetMaNhom)]
+        [HttpGet]
+        public IActionResult GetMaNhom()
+        {
+            List<string> lst = nhomNguoiDungService.GetMaNhom();
+            if (lst == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsNhomNguoiDung.NOT_FOUND_MaNhom); }
+            return Ok(lst);
         }
     }
 }

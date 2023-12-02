@@ -69,11 +69,14 @@ namespace API_QuanLyKho.Repository
         {
             try
             {
-                RemoveKhoHang(model.MA_KHO);
-                AddKhoHang(model);
+                string query = "UPDATE KHO_HANG SET TENKHO = N'" + model.TEN_KHO + "', DIACHI_KHO = N'" + model.DIACHI + "', GHICHU_KHO = '" + model.GHICHU + "' WHERE MAKHO = '" + model.MA_KHO + "'";
+                con.updateToDatabase(query);
                 return 1;
             }
-            catch { return 0; }
+            catch
+            {
+                return 0;
+            }
         }
     }
 }

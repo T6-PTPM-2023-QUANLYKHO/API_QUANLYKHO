@@ -13,6 +13,7 @@ namespace API_QuanLyKho.Repository
         public int AddNhanVien(NhanVienModel modelNV);
         public int RemoveNhanVien(string maNV);
         public int UpdateNhanVien(NhanVienModel modelNV, string maNV);
+        public List<string> GetMaNhanVien();
     }
     public class NhanVienRepository:INhanVienRepository
     {
@@ -112,6 +113,18 @@ namespace API_QuanLyKho.Repository
                 return 1;
             }
             catch { return 0; }
+        }
+        public List<string> GetMaNhanVien()
+        {
+            string query = "SELECT DISTINCT MANV FROM NHAN_VIEN";
+            DataTable tbl = con.getDataTable(query);
+            List<string> lst = new List<string>();
+            for (int i = 0; i < tbl.Rows.Count; i++)
+            {
+                string manv = tbl.Rows[i][0].ToString();
+                lst.Add(manv);
+            }
+            return lst;
         }
     }
 }

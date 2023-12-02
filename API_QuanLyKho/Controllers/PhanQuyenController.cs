@@ -10,7 +10,7 @@ namespace API_QuanLyKho.Controllers
     [ApiController]
     public class PhanQuyenController : ControllerBase
     {
-        private readonly IPhanQuyenService phanQuyenService;
+        private  readonly IPhanQuyenService phanQuyenService;
         public PhanQuyenController(IPhanQuyenService phanQuyenService)
         {
             this.phanQuyenService = phanQuyenService;
@@ -33,6 +33,7 @@ namespace API_QuanLyKho.Controllers
             if (model == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsPhanQuyen.NOT_FOUND_MaNhomNguoiDung); }
             return Ok(model);
         }
+
         [Route(WebEndpoint.PhanQuyen.ADD_ITEM)]
         [HttpPost]
         public IActionResult AddTK(PhanQuyenModel model)

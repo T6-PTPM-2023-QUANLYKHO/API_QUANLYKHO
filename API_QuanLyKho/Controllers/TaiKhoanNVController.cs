@@ -27,7 +27,7 @@ namespace API_QuanLyKho.Controllers
         [HttpGet]
         public IActionResult GetID()
         {
-            string matk = RouteData.Values["id"].ToString();
+            string matk = RouteData.Values["taikhoan"].ToString();
             if (String.IsNullOrEmpty(matk)) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
             TaiKhoanNVModel model = taiKhoanNVService.getTaiKhoanNVById(matk);
             if (model == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsTaiKhoanNV.NOT_FOUND_TaiKhoan); }

@@ -78,5 +78,13 @@ namespace API_QuanLyKhoHang.Controllers
             if (kq == 1) { return Ok(ApplicationContants.ReponseMessageConstantsNhanVien.UPDATE_NhanVien_SUCCESS); }
             return BadRequest(ApplicationContants.ReponseMessageConstantsNhanVien.NOT_FOUND_NhanVien);
         }
+        [Route(WebEndpoint.NhanVien.GetMaNhanVien)]
+        [HttpGet]
+        public IActionResult GetMaNhom()
+        {
+            List<string> lst = NhanVienService.GetMaNhanVien();
+            if (lst == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsNhanVien.NOT_FOUND_NhanVien); }
+            return Ok(lst);
+        }
     }
 }
