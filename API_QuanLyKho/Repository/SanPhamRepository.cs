@@ -1,7 +1,8 @@
 ﻿using API_QuanLyKho.Hepper;
 using API_QuanLyKho.Model;
 using System.Data;
-
+using System.Net;
+using System.Text;
 
 namespace API_QuanLyKho.Repository
 {
@@ -51,7 +52,7 @@ namespace API_QuanLyKho.Repository
         {
             string query = "SELECT * FROM SAN_PHAM where MA_SP ='" + masp + "'";
             DataTable tbl = con.getDataTable(query);
-            SanPhamModel Lsp = new SanPhamModel(
+                SanPhamModel Lsp = new SanPhamModel(
                 tbl.Rows[0][0].ToString(), // MA_SP
                 tbl.Rows[0][1].ToString(), // MA_NCC
                 tbl.Rows[0][2].ToString(), // TEN_SP
@@ -114,12 +115,18 @@ namespace API_QuanLyKho.Repository
             }
             return lst;
         }
+        public string bamByte(byte[] x)
+        {
+            byte[] bytePic = x;
+            string ParamImageStr = "0x" + BitConverter.ToString(bytePic, 0).Replace("-", string.Empty); //New Line
+            return ParamImageStr;
+        }
         public int AddSanPham(SanPhamModel model)
         {
             try
             {
                 string query = "insert into SAN_PHAM (MA_SP, MA_NCC, TEN_SP, NGAYSX, HSD, SOLUONG_SP, MALOAI, GIA, GHICHU_SP, MAKHO, ANH) " +
-                "values ('" + model.MA_SP + "', '" + model.MA_NCC + "', N'" + model.TEN_SP + "', '" + model.NGAYSX.ToString("yyyy-MM-dd") + "', '" + model.HSD.ToString("yyyy-MM-dd") + "', " + model.SOLUONG + ", '" + model.MA_LOAI + "', " + model.GIA + ", N'" + model.GHICHU_SP + "', '" + model.MAKHO + "', '" + model.ANH + "')";
+                "values ('" + model.MA_SP + "', '" + model.MA_NCC + "', N'" + model.TEN_SP + "', '" + model.NGAYSX.ToString("yyyy-MM-dd") + "', '" + model.HSD.ToString("yyyy-MM-dd") + "', " + model.SOLUONG + ", '" + model.MA_LOAI + "', " + model.GIA + ", N'" + model.GHICHU_SP + "', '" + model.MAKHO + "',convert(VARBINARY(max), '" + bamByte(model.ANH) + "', 1))";
 
                 con.updateToDatabase(query);
                 return 1;
