@@ -7,7 +7,7 @@ namespace API_QuanLyKho.Repository
     public interface IChiTietNHRepository
     {
         public List<ChiTietNHModel> getAllChiTietNH();
-        public ChiTietNHModel getChiTietNHById(string maCTNH);
+        public List<ChiTietNHModel> getChiTietNHById(string maCTNH);
         public int AddChiTietNH(ChiTietNHModel modelCTNH);
         public int RemoveChiTietNH(string maCTNH);
         public int UpdateChiTietNH(ChiTietNHModel modelCTNH);
@@ -33,19 +33,23 @@ namespace API_QuanLyKho.Repository
             }
             return lst;
         }
-        public ChiTietNHModel getChiTietNHById(string maCTNH)
+        public List<ChiTietNHModel> getChiTietNHById(string maCTNH)
         {
             string query = "SELECT * FROM CHITIET_NH where MAPHIEU_NH ='" + maCTNH + "'";
             DataTable tbl = con.getDataTable(query);
-
-            ChiTietNHModel ctnh = new ChiTietNHModel(
-                     tbl.Rows[0][0].ToString(), //maPhieuNhap
-                      tbl.Rows[0][1].ToString(),//maSanPham
-                      int.Parse(tbl.Rows[0][2].ToString()),//soLuong 
-                      int.Parse(tbl.Rows[0][3].ToString()), //thanhTien
-                      int.Parse(tbl.Rows[0][4].ToString()) //gia
-                                                 );
-            return ctnh;
+            List<ChiTietNHModel> lst = new List<ChiTietNHModel>();
+            for (int i = 0; i < tbl.Rows.Count; i++)
+            {
+                ChiTietNHModel ctnh = new ChiTietNHModel(
+                    tbl.Rows[i][0].ToString(), //maPhieuNhap
+                      tbl.Rows[i][1].ToString(),//maSanPham
+                      int.Parse(tbl.Rows[i][2].ToString()),//soLuong 
+                      int.Parse(tbl.Rows[i][3].ToString()), //thanhTien
+                      int.Parse(tbl.Rows[i][4].ToString()) //gia
+                                                );
+                lst.Add(ctnh);
+            }
+            return lst;
         }
         public int AddChiTietNH(ChiTietNHModel model)
         {

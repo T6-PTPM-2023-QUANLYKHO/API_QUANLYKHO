@@ -1,12 +1,13 @@
 ﻿using API_QuanLyKho.Model;
 using API_QuanLyKho.Repository;
+using System.Collections.Generic;
 
 namespace API_QuanLyKho.Service
 {
     public interface IChiTietNHService
     {
         public List<ChiTietNHModel> getAllChiTietNH();
-        public ChiTietNHModel getChiTietNHById(string maCTNH);
+        public List<ChiTietNHModel> getChiTietNHById(string maCTNH);
         public int AddChiTietNH(ChiTietNHModel modelCTNH);
         public int RemoveChiTietNH(string maCTNH);
         public int UpdateChiTietNH(ChiTietNHModel modelCTNH);
@@ -21,13 +22,11 @@ namespace API_QuanLyKho.Service
             lst = chiTietNHRepository.getAllChiTietNH();
             return lst;
         }
-        public ChiTietNHModel getChiTietNHById(string maCTNH)
+        public List<ChiTietNHModel> getChiTietNHById(string maCTNH)
         {
-            if (String.IsNullOrEmpty(maCTNH))
-            {
-                return null;
-            }
-            return chiTietNHRepository.getChiTietNHById(maCTNH);
+            List<ChiTietNHModel> lst = new List<ChiTietNHModel>();
+            lst = chiTietNHRepository.getChiTietNHById(maCTNH);
+            return lst;
         }
         public int AddChiTietNH(ChiTietNHModel model)
         {

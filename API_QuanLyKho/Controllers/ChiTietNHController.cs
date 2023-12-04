@@ -33,9 +33,9 @@ namespace API_QuanLyKhoHang.Controllers
         {
             string maph = RouteData.Values["maphieunh"].ToString();
             if (String.IsNullOrEmpty(maph)) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
-            ChiTietNHModel model = chiTietNHService.getChiTietNHById(maph);
-            if (model == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsChiTietNhapHang.NOT_FOUND_ChiTietNhapHang); }
-            return Ok(model);
+            List<ChiTietNHModel> lst = chiTietNHService.getChiTietNHById(maph);
+            if (lst == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsChiTietNhapHang.NOT_FOUND_ChiTietNhapHang); }
+            return Ok(lst);
         }
         [Route(WebEndpoint.ChiTietNH.ADD_ITEM)]
         [HttpPost]

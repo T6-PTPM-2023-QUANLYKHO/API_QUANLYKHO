@@ -142,7 +142,7 @@
             public const string ADD_ITEM = BaseEndpoint + "/add-item";
             public const string REMOVE_BY_PHIEUNHAPHANG = BaseEndpoint + "/remove-by-maphieu/{maphieunhaphang}";
             public const string REMOVE_ITEM = BaseEndpoint + "/remove/{maphieunhaphang}";
-            public const string UPDATE_ITEM = BaseEndpoint + "/update/{maphieunhaphang}";
+            public const string UPDATE_ITEM = BaseEndpoint + "/update";
             public const string GET_PhieuNhapSoNgay = BaseEndpoint + "/get-phieu-nhap-so-ngay/{songay}";
         }
         public static class PhanQuyen

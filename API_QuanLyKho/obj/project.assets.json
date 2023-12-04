@@ -837,18 +837,13 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\PC\\.nuget\\packages\\": {},
     "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages": {},
-=======
-    "C:\\Users\\DELL\\.nuget\\packages\\": {},
->>>>>>> 452e53dbd03bd6aba244da700c7069a6f989dcbc
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "F:\\OneDrive - Ho Chi Minh city University of Food Industry\\Ki_7_CNTT\\LTUD_ThongMinh\\DOAN\\API_QUANLYKHO\\API_QuanLyKho\\API_QuanLyKho.csproj",
       "projectName": "API_QuanLyKho",
       "projectPath": "F:\\OneDrive - Ho Chi Minh city University of Food Industry\\Ki_7_CNTT\\LTUD_ThongMinh\\DOAN\\API_QUANLYKHO\\API_QuanLyKho\\API_QuanLyKho.csproj",
@@ -862,19 +857,6 @@
       "configFilePaths": [
         "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
-=======
-      "projectUniqueName": "D:\\HK-7\\Phan-mem-thong-minh\\API_QuanLyKho\\API_QuanLyKho\\API_QuanLyKho.csproj",
-      "projectName": "API_QuanLyKho",
-      "projectPath": "D:\\HK-7\\Phan-mem-thong-minh\\API_QuanLyKho\\API_QuanLyKho\\API_QuanLyKho.csproj",
-      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "D:\\HK-7\\Phan-mem-thong-minh\\API_QuanLyKho\\API_QuanLyKho\\obj\\",
-      "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
-      "configFilePaths": [
-        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 452e53dbd03bd6aba244da700c7069a6f989dcbc
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -883,10 +865,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-<<<<<<< HEAD
         "C:\\Program Files\\DevExpress 22.1\\Components\\System\\Components\\Packages": {},
-=======
->>>>>>> 452e53dbd03bd6aba244da700c7069a6f989dcbc
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -941,12 +920,16 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
->>>>>>> 452e53dbd03bd6aba244da700c7069a6f989dcbc
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file F:\\OneDrive - Ho Chi Minh city University of Food Industry\\Ki_7_CNTT\\LTUD_ThongMinh\\DOAN\\API_QUANLYKHO\\API_QuanLyKho\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
