@@ -3,6 +3,7 @@ using API_QuanLyKho.Model;
 using API_QuanLyKho.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace API_QuanLyKho.Controllers
 {
@@ -39,6 +40,17 @@ namespace API_QuanLyKho.Controllers
             string maph = RouteData.Values["sdt"].ToString();
             if (String.IsNullOrEmpty(maph)) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
             KhachHangModel model = khachHangService.getKhachHangBySDT(maph);
+            if (model == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsKhachHang.NOT_FOUND_KhachHang); }
+            return Ok(model);
+        }
+        [Route(WebEndpoint.KhachHang.GET_BY_SDT_FAX)]
+        [HttpGet]
+        public IActionResult GetKHBySDT_FAX()
+        {
+            string sdt = RouteData.Values["sdt"].ToString();
+            string fax = RouteData.Values["fax"].ToString();
+            if (String.IsNullOrEmpty(sdt) && String.IsNullOrEmpty(fax)) { return BadRequest(ApplicationContants.ResponseCodeConstants.FAILED); }
+            KhachHangModel model = khachHangService.getTK_KH_BySDT_FAX(sdt, fax);
             if (model == null) { return BadRequest(ApplicationContants.ReponseMessageConstantsKhachHang.NOT_FOUND_KhachHang); }
             return Ok(model);
         }

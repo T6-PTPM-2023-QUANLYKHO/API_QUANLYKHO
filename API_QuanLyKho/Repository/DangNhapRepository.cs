@@ -66,12 +66,20 @@ namespace API_QuanLyKho.Repository
         {
             string query = "SELECT * FROM DANGNHAP WHERE TAIKHOAN = '" + taikhoandn + "' AND MATKHAU = '" + matkhau + "'";
             DataTable tbl = con.getDataTable(query);
-
-            DangNhapModel kh = new DangNhapModel(
+            if (tbl.Rows.Count > 0)
+            {
+                DangNhapModel kh = new DangNhapModel(
                       tbl.Rows[0][0].ToString(), //taikhoandn
                       tbl.Rows[0][1].ToString()//mk
                                                  );
-            return kh;
+                return kh;
+            }
+            else
+            {
+                return null;
+            }
+
+                
         }
         public int AddDangNhap(DangNhapModel model)
         {

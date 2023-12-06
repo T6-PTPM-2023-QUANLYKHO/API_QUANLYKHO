@@ -8,6 +8,7 @@ namespace API_QuanLyKho.Service
         public List<KhachHangModel> getAllKhachHang();
         public KhachHangModel getKhachHangById(string makh); 
         public KhachHangModel getKhachHangBySDT(string sdt);
+        public KhachHangModel getTK_KH_BySDT_FAX(string sdt, string fax);
         public int AddKhachHang(KhachHangModel model);
         public int RemovekhachHang(string makh);
         public int UpdatekhachHang(KhachHangModel model);
@@ -37,6 +38,14 @@ namespace API_QuanLyKho.Service
                 return null;
             }
             return khachHangRepository.getKhachHangBySDT(sdt);
+        }
+        public KhachHangModel getTK_KH_BySDT_FAX(string sdt, string fax)
+        {
+            if (String.IsNullOrEmpty(sdt) && String.IsNullOrEmpty(fax))
+            {
+                return null;
+            }
+            return khachHangRepository.getTK_KH_BySDT_FAX(sdt, fax);
         }
         public int AddKhachHang(KhachHangModel model)
         {

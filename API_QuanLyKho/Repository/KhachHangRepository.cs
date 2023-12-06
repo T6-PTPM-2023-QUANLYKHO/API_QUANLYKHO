@@ -10,6 +10,7 @@ namespace API_QuanLyKho.Repository
         public List<KhachHangModel> getAllKhachHang();
         public KhachHangModel getKhachHangById(string makh);
         public KhachHangModel getKhachHangBySDT(string sdt);
+        public KhachHangModel getTK_KH_BySDT_FAX(string sdt, string fax);
         public int AddKhachHang(KhachHangModel model);
         public int RemoveKhachHang(string makh );
         public int UpdateKhachHang(KhachHangModel model, string maKH);
@@ -56,6 +57,25 @@ namespace API_QuanLyKho.Repository
             }
             catch { return null; }
             
+        }
+        public KhachHangModel getTK_KH_BySDT_FAX(string sdt, string fax)
+        {
+            try
+            {
+                string query = "select * from KHACH_HANG where SDT_KH = '"+sdt+"'and FAX = '"+fax+"'";
+                DataTable tbl = con.getDataTable(query);
+                KhachHangModel kh = new KhachHangModel(
+                         tbl.Rows[0][0].ToString(), //makh
+                           tbl.Rows[0][1].ToString(),//tenkh
+                           tbl.Rows[0][2].ToString(),//dia chi 
+                           tbl.Rows[0][3].ToString(), //gioitinh
+                           tbl.Rows[0][4].ToString(), //sdt
+                           tbl.Rows[0][5].ToString(),//email
+                           tbl.Rows[0][6].ToString() //fax
+                                                     );
+                return kh;
+            }
+            catch { return null; }
         }
         public KhachHangModel getKhachHangById(string makh)
         {
