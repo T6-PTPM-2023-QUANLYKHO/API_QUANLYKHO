@@ -3,6 +3,11 @@
     public class WebEndpoint
     {
         public const string AreaName = "api";
+        public static class AI
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/ai";
+            public const string GET_ALL = BaseEndpoint + "/get-all";
+        }
         public static class ChiTietXH
         {
             private const string BaseEndpoint = "~/" + AreaName + "/chi-tiet-xuat-hang";

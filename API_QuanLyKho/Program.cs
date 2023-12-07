@@ -2,6 +2,7 @@ using API_QuanLyKho.Repository;
 using API_QuanLyKho.Service;
 using API_QuanLyKho.Repository;
 using API_QuanLyKho.Service;
+using static API_QuanLyKho.Repository.AIRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IChiTietXHRepository, ChiTietXHRepository>();
 builder.Services.AddScoped<IChiTietXHService, ChiTietXHService>();
 
+builder.Services.AddScoped<IAIRepository, AIRepository>();
+builder.Services.AddScoped<IAIService, AIService>();
+
 builder.Services.AddScoped<IPhieuXuatHangService, PhieuXuatHangService>();
 builder.Services.AddScoped<IPhieuXuatHangRepository, PhieuXuatHangRepository>();
 
@@ -24,10 +28,8 @@ builder.Services.AddScoped<IKhachHangService, KhachHangService>();
 builder.Services.AddScoped<ILoaiSPService, LoaiSPService>();
 builder.Services.AddScoped<ILoaiSPRepository, LoaiSPRepository>();
 
-
 builder.Services.AddScoped<ISanPhamService, SanPhamService>();
 builder.Services.AddScoped<ISanPhamRepository, SanPhamRepository>();
-
 
 builder.Services.AddScoped<IKhuService, KhuService>();
 builder.Services.AddScoped<IKhuRepository, KhuRepository>();
